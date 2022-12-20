@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace StudioDiPsicologia
 {
-    internal class Medico
+    public class Medico
     {
         string nome;
         string cognome;

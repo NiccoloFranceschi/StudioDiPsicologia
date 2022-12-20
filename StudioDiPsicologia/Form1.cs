@@ -20,13 +20,14 @@ namespace StudioDiPsicologia
         private void Form1_Load(object sender, EventArgs e)
         {
             pbOrario.ForeColor = Color.White;
-            //caricaListBoxPazienti(lbxPazienti);
-            //caricaListBoxMedici(lbxMedici);
+            caricaListBoxPazienti(lbxPazienti);
+            caricaListBoxMedici(lbxMedici);
         }
         
         // --- Liste ---
         List<Medico> Medici = new List<Medico>();
         List<Paziente> Pazienti = new List<Paziente>();
+        List<Appuntamento> Appuntamenti = new List<Appuntamento>();
 
         
         //  --- Orologio ---
@@ -255,6 +256,15 @@ namespace StudioDiPsicologia
             foreach (Medico medico in Medici)
             {
                 lst.Items.Add(medico._nome + " " + medico._cognome);
+            }
+        }
+        
+        public void caricaListBoxAppuntamenti(ListBox lst)
+        {
+            lst.Items.Clear();
+            foreach (Appuntamento appuntamento in Appuntamenti)
+            {
+                lst.Items.Add(appuntamento.medico + " " + appuntamento.paziente);
             }
         }
 
