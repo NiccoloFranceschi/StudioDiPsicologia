@@ -1,4 +1,6 @@
-﻿namespace StudioDiPsicologia
+﻿using System.IO;
+
+namespace StudioDiPsicologia
 {
     public class Appuntamento
     {
@@ -24,6 +26,17 @@
         }
         
         public Appuntamento() : this(new Medico(), new Paziente(), "", "", 0) { }
+
+        public void salvaAppuntamento()
+        {
+            FileStream fs = new FileStream("Appuntamenti.bin", FileMode.OpenOrCreate);
+            BinaryWriter bw = new BinaryWriter(fs);
+            
+            bw.Write(medico.nome);
+            bw.Write(medico.cognome);
+            bw.Write(medico.specializzazione);
+            
+        }
         
 
     }

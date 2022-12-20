@@ -22,6 +22,7 @@ namespace StudioDiPsicologia
             pbOrario.ForeColor = Color.White;
             caricaListBoxPazienti(lbxPazienti);
             caricaListBoxMedici(lbxMedici);
+            caricaListBoxAppuntamenti(lbxAppuntamenti);
         }
         
         // --- Liste ---
@@ -131,11 +132,11 @@ namespace StudioDiPsicologia
             }
             else
             {
-                pazientino._nome = txtNomePaziente.Text;
-                pazientino._cognome = txtCognomePaziente.Text;
-                pazientino._giornoDiNascita = giornoDiNascita;
-                pazientino._meseDiNascitaa = meseDiNascita;
-                pazientino._annoDiNascita = annoDiNascita;
+                pazientino.nome = txtNomePaziente.Text;
+                pazientino.cognome = txtCognomePaziente.Text;
+                pazientino.giornoDiNascita = giornoDiNascita;
+                pazientino.meseDiNascita = meseDiNascita;
+                pazientino.annoDiNascita = annoDiNascita;
 
                 // verifica che l'iban sia di 27 caratteri
                 if (txtIbanPaziente.Text.Length != 27)
@@ -144,7 +145,7 @@ namespace StudioDiPsicologia
                 }
                 else
                 {
-                    pazientino._IBAN = txtIbanPaziente.Text.ToUpper();
+                    pazientino.IBAN = txtIbanPaziente.Text.ToUpper();
                     
                     Pazienti.Add(pazientino);
                     caricaListBoxPazienti(lbxPazienti);
@@ -201,11 +202,11 @@ namespace StudioDiPsicologia
             }
             else
             {
-                medichetto._nome = txtNomeMedico.Text;
-                medichetto._cognome = txtCognomeMedico.Text;
-                medichetto._specializzazione = txtSpecializzazioneMedico.Text;
-                medichetto._orarioInizio = Convert.ToInt32(nInizioMedico.Value);
-                medichetto._orarioFine = Convert.ToInt32(nFineMedico.Value);
+                medichetto.nome = txtNomeMedico.Text;
+                medichetto.cognome = txtCognomeMedico.Text;
+                medichetto.specializzazione = txtSpecializzazioneMedico.Text;
+                medichetto.orarioInizio = Convert.ToInt32(nInizioMedico.Value);
+                medichetto.orarioFine = Convert.ToInt32(nFineMedico.Value);
                 
                 Medici.Add(medichetto);
                 caricaListBoxMedici(lbxMedici);
@@ -238,6 +239,10 @@ namespace StudioDiPsicologia
             RimuoviMedico(lbxMedici);
         } 
 
+        
+        // --- Appuntamento ---
+        // Funzione per aggiungere un appuntamento
+        
 
 
 
@@ -246,7 +251,7 @@ namespace StudioDiPsicologia
             lst.Items.Clear();
             foreach (Paziente paziente in Pazienti)
             {
-                lst.Items.Add(paziente._nome + " " + paziente._cognome);
+                lst.Items.Add(paziente.nome + " " + paziente.cognome);
             }
         }
         
@@ -255,7 +260,7 @@ namespace StudioDiPsicologia
             lst.Items.Clear();
             foreach (Medico medico in Medici)
             {
-                lst.Items.Add(medico._nome + " " + medico._cognome);
+                lst.Items.Add(medico.nome + " " + medico.cognome);
             }
         }
         

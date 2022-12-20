@@ -9,24 +9,24 @@ namespace StudioDiPsicologia
 {
     public class Medico
     {
-        string nome;
-        string cognome;
-        string specializzazione;
-        int orarioInizio;
-        int orarioFine;
-        bool inLavoro;
+        string _nome;
+        string _cognome;
+        string _specializzazione;
+        int _orarioInizio;
+        int _orarioFine;
+        bool _inLavoro;
 
         // Nome e cognome
-        public string _nome { get { return nome; } set { nome = value; } }
-        public string _cognome { get { return cognome; } set { cognome = value; } }
+        public string nome { get { return _nome; } set { _nome = value; } }
+        public string cognome { get { return _cognome; } set { _cognome = value; } }
 
         // Specializzazione e Lavoro
-        public string _specializzazione { get { return specializzazione; } set { specializzazione = value; } }
-        public bool _inLavoro { get { return inLavoro; } set { inLavoro = value; } }
+        public string specializzazione { get { return _specializzazione; } set { _specializzazione = value; } }
+        public bool inLavoro { get { return _inLavoro; } set { _inLavoro = value; } }
 
         // Orario Lavoro
-        public int _orarioInizio { get { return orarioInizio; } set { orarioInizio = value; } }
-        public int _orarioFine { get { return orarioFine; } set { orarioFine = value; } }
+        public int orarioInizio { get { return _orarioInizio; } set { _orarioInizio = value; } }
+        public int orarioFine { get { return _orarioFine; } set { _orarioFine = value; } }
 
 
         // Costruttori

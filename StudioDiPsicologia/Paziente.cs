@@ -9,24 +9,24 @@ namespace StudioDiPsicologia
 {
     public class Paziente
     {
-        string nome;
-        string cognome;
-        int giornoDiNascita;
-        int meseDiNascita;
-        int annoDiNascita;
-        string IBAN;
+        string _nome;
+        string _cognome;
+        int _giornoDiNascita;
+        int _meseDiNascita;
+        int _annoDiNascita;
+        string _IBAN;
 
         // Nome e cognome
-        public string _nome { get { return nome; } set { nome = value; } }
-        public string _cognome { get { return cognome; } set { cognome = value; } }
+        public string nome { get { return _nome; } set { _nome = value; } }
+        public string cognome { get { return _cognome; } set { _cognome = value; } }
 
         // Data di Nascita
-        public int _giornoDiNascita { get { return giornoDiNascita; } set { giornoDiNascita = value; } }
-        public int _meseDiNascitaa { get { return meseDiNascita; } set { meseDiNascita = value; } }
-        public int _annoDiNascita { get { return annoDiNascita; } set { annoDiNascita = value; } }
+        public int giornoDiNascita { get { return _giornoDiNascita; } set { _giornoDiNascita = value; } }
+        public int meseDiNascita { get { return _meseDiNascita; } set { _meseDiNascita = value; } }
+        public int annoDiNascita { get { return _annoDiNascita; } set { _annoDiNascita = value; } }
 
         // IBAN
-        public string _IBAN { get { return IBAN; } set { IBAN = value; } }
+        public string IBAN { get { return _IBAN; } set { _IBAN = value; } }
 
 
         // Costruttori
