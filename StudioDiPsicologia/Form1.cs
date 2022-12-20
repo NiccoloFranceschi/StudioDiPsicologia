@@ -95,6 +95,18 @@ namespace StudioDiPsicologia
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
         }
+        private void txtNomeMedico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
+        }
+        private void txtCognomeMedico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
+        }
+        private void txtSpecializzazioneMedico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
+        }
 
 
         // --- Paziente ---
@@ -131,16 +143,43 @@ namespace StudioDiPsicologia
             
         }
 
+        // Pulsante Aggiungi Paziente
         private void btnAggiungiPaziente_Click(object sender, EventArgs e)
         {
             AggiungiPaziente();
         }
+        
 
         // --- Medico ---
+        // Funzione per aggiungere il Medico
         public void AggiungiMedico()
         {
-            
+            Medico medichetto = new Medico();
+
+            if (txtNomeMedico.Text == "" || txtCognomeMedico.Text == "" || txtSpecializzazioneMedico.Text == "")
+            {
+                MessageBox.Show("Non hai inserito tutti i dati", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                medichetto._nome = txtNomeMedico.Text;
+                medichetto._cognome = txtCognomeMedico.Text;
+                medichetto._specializzazione = txtSpecializzazioneMedico.Text;
+                medichetto._orarioInizio = Convert.ToInt32(nInizioMedico.Value);
+                medichetto._orarioFine = Convert.ToInt32(nFineMedico.Value);
+            }
         }
+
+        // Pulsante Aggiungi Medico
+        private void btnAggiungiMedico_Click(object sender, EventArgs e)
+        {
+            AggiungiMedico();
+        }
+
+
+
+
+
 
 
 

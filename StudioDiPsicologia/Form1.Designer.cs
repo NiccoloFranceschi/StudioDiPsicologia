@@ -498,6 +498,7 @@
             this.txtSpecializzazioneMedico.Name = "txtSpecializzazioneMedico";
             this.txtSpecializzazioneMedico.Size = new System.Drawing.Size(307, 20);
             this.txtSpecializzazioneMedico.TabIndex = 31;
+            this.txtSpecializzazioneMedico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSpecializzazioneMedico_KeyPress);
             // 
             // btnAggiungiMedico
             // 
@@ -514,6 +515,7 @@
             this.btnAggiungiMedico.TabIndex = 30;
             this.btnAggiungiMedico.Text = "Aggiungi";
             this.btnAggiungiMedico.UseVisualStyleBackColor = false;
+            this.btnAggiungiMedico.Click += new System.EventHandler(this.btnAggiungiMedico_Click);
             // 
             // txtCognomeMedico
             // 
@@ -521,6 +523,7 @@
             this.txtCognomeMedico.Name = "txtCognomeMedico";
             this.txtCognomeMedico.Size = new System.Drawing.Size(307, 20);
             this.txtCognomeMedico.TabIndex = 26;
+            this.txtCognomeMedico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCognomeMedico_KeyPress);
             // 
             // txtNomeMedico
             // 
@@ -528,6 +531,7 @@
             this.txtNomeMedico.Name = "txtNomeMedico";
             this.txtNomeMedico.Size = new System.Drawing.Size(307, 20);
             this.txtNomeMedico.TabIndex = 25;
+            this.txtNomeMedico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeMedico_KeyPress);
             // 
             // label5
             // 
