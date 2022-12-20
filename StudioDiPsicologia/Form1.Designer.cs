@@ -23,8 +23,8 @@
         #region Codice generato da Progettazione Windows Form
 
         /// <summary>
-        /// Metodo necessario per il supporto della finestra di progettazione. Non modificare
-        /// il contenuto del metodo con l'editor di codice.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -57,7 +57,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lbxMedici = new System.Windows.Forms.ListBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.nFineMedico = new System.Windows.Forms.NumericUpDown();
             this.nInizioMedico = new System.Windows.Forms.NumericUpDown();
@@ -83,8 +83,7 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
             this.panel3.Controls.Add(this.lblSquadre);
             this.panel3.Controls.Add(this.label1);
@@ -274,10 +273,7 @@
             this.lbxPazienti.ForeColor = System.Drawing.Color.White;
             this.lbxPazienti.FormattingEnabled = true;
             this.lbxPazienti.ItemHeight = 24;
-            this.lbxPazienti.Items.AddRange(new object[] {
-            "Roberto",
-            "Francesco",
-            "Pierpaolo"});
+            this.lbxPazienti.Items.AddRange(new object[] { "Roberto", "Francesco", "Pierpaolo" });
             this.lbxPazienti.Location = new System.Drawing.Point(623, 0);
             this.lbxPazienti.Name = "lbxPazienti";
             this.lbxPazienti.Size = new System.Drawing.Size(322, 424);
@@ -306,9 +302,7 @@
             // 
             // btnAggiungiPaziente
             // 
-            this.btnAggiungiPaziente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAggiungiPaziente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAggiungiPaziente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.btnAggiungiPaziente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAggiungiPaziente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -418,7 +412,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
-            this.panel4.Controls.Add(this.listBox1);
+            this.panel4.Controls.Add(this.lbxMedici);
             this.panel4.Controls.Add(this.groupBox2);
             this.panel4.Controls.Add(this.label13);
             this.panel4.Location = new System.Drawing.Point(12, 489);
@@ -426,22 +420,19 @@
             this.panel4.Size = new System.Drawing.Size(945, 424);
             this.panel4.TabIndex = 22;
             // 
-            // listBox1
+            // lbxMedici
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.listBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBox1.ForeColor = System.Drawing.Color.White;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 24;
-            this.listBox1.Items.AddRange(new object[] {
-            "Roberto",
-            "Francesco",
-            "Pierpaolo"});
-            this.listBox1.Location = new System.Drawing.Point(623, 0);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(322, 424);
-            this.listBox1.TabIndex = 26;
+            this.lbxMedici.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.lbxMedici.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lbxMedici.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbxMedici.ForeColor = System.Drawing.Color.White;
+            this.lbxMedici.FormattingEnabled = true;
+            this.lbxMedici.ItemHeight = 24;
+            this.lbxMedici.Items.AddRange(new object[] { "Roberto", "Francesco", "Pierpaolo" });
+            this.lbxMedici.Location = new System.Drawing.Point(623, 0);
+            this.lbxMedici.Name = "lbxMedici";
+            this.lbxMedici.Size = new System.Drawing.Size(322, 424);
+            this.lbxMedici.TabIndex = 26;
             // 
             // groupBox2
             // 
@@ -502,9 +493,7 @@
             // 
             // btnAggiungiMedico
             // 
-            this.btnAggiungiMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAggiungiMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAggiungiMedico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.btnAggiungiMedico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnAggiungiMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -623,7 +612,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nFineMedico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nInizioMedico)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -656,7 +644,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lbxPazienti;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lbxMedici;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown nFineMedico;
         private System.Windows.Forms.NumericUpDown nInizioMedico;

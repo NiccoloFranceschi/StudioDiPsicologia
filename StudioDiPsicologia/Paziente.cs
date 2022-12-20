@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,28 @@ namespace StudioDiPsicologia
         }
         public Paziente():this("Roberto", "Paziente", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, "0X020202") { }
 
+        // Salvo i pazienti in un file binario
+        public void SalvaPaziente()
+        {
+            FileStream fs = new FileStream("Pazienti.bin", FileMode.OpenOrCreate);
+            BinaryWriter bw = new BinaryWriter(fs);
+            
+            fs.Seek(0, SeekOrigin.End);
+            
+            bw.Write(nome);
+            bw.Write(cognome);
+            bw.Write(giornoDiNascita);
+            bw.Write(meseDiNascita);
+            bw.Write(annoDiNascita);
+            bw.Write(IBAN);
+            fs.Close();
+        }
 
-
+        // Override del metodo ToString
+        public override string ToString()
+        {
+            return $"{nome}, {cognome}, {giornoDiNascita}, {IBAN}";
+        }
 
     }
 }

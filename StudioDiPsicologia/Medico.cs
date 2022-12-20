@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,29 @@ namespace StudioDiPsicologia
         }
         public Medico() : this("Pietro", "Roberto", "Robertare", 0, 0, true) { }
 
-
-
+        // Salvo il medico in un file binario
+        public void salvaMedico()
+        {
+            FileStream fs = new FileStream("medici.bin", FileMode.OpenOrCreate);
+            BinaryWriter bw = new BinaryWriter(fs);
+        
+            fs.Seek(0, SeekOrigin.End);
+            
+            bw.Write(nome);
+            bw.Write(cognome);
+            bw.Write(specializzazione);
+            bw.Write(orarioInizio);
+            bw.Write(orarioFine);
+            bw.Write(inLavoro);
+            bw.Close();
+            
+        }
+        
+        // Override del metodo ToString
+        public override string ToString()
+        {
+            return $"{nome}, {cognome}, {specializzazione}, {orarioInizio}, {orarioFine}";
+        }
+        
     }
 }

@@ -15,14 +15,18 @@ namespace StudioDiPsicologia
         public Form1()
         {
             InitializeComponent();
-            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             pbOrario.ForeColor = Color.White;
         }
+        
+        // --- Liste ---
+        List<Medico> Medici = new List<Medico>();
+        List<Paziente> Pazienti = new List<Paziente>();
 
+        
         //  --- Orologio ---
         // Event tick per l'orologio nella home
         private void Orologio_Tick(object sender, EventArgs e)
@@ -138,6 +142,9 @@ namespace StudioDiPsicologia
                 else
                 {
                     pazientino._IBAN = txtIbanPaziente.Text.ToUpper();
+                    
+                    Pazienti.Add(pazientino);
+                    caricaListBoxPazienti(lbxPazienti);
                 }
             }
             
@@ -167,6 +174,9 @@ namespace StudioDiPsicologia
                 medichetto._specializzazione = txtSpecializzazioneMedico.Text;
                 medichetto._orarioInizio = Convert.ToInt32(nInizioMedico.Value);
                 medichetto._orarioFine = Convert.ToInt32(nFineMedico.Value);
+                
+                Medici.Add(medichetto);
+                caricaListBoxMedici(lbxMedici);
             }
         }
 
@@ -183,5 +193,23 @@ namespace StudioDiPsicologia
 
 
 
+        public void caricaListBoxPazienti(ListBox lst)
+        {
+            lst.Items.Clear();
+            foreach (Paziente paziente in Pazienti)
+            {
+                lst.Items.Add(paziente._nome + " " + paziente._cognome);
+            }
+        }
+        
+        public void caricaListBoxMedici(ListBox lst)
+        {
+            lst.Items.Clear();
+            foreach (Medico medico in Medici)
+            {
+                lst.Items.Add(medico._nome + " " + medico._cognome);
+            }
+        }
+        
     }
 }
