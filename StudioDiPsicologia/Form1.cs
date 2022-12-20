@@ -21,7 +21,6 @@ namespace StudioDiPsicologia
         private void Form1_Load(object sender, EventArgs e)
         {
             pbOrario.ForeColor = Color.White;
-
         }
 
 
@@ -81,5 +80,61 @@ namespace StudioDiPsicologia
             }
             return null;
         }
+
+        // Funzione per controllare se sono state inserite solo lettere
+        private bool controllaLettere(string testo)
+        {
+            if (testo.All(char.IsLetter))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }    
+        }
+
+        // Funzione per aggiungere il paziente
+        public void AggiungiPaziente()
+        {
+            Paziente = new Paziente();
+            int giornoDiNascita = Convert.ToInt32(nudGiornoNascita.Value); // prende il valore del giorno di nascita
+            int meseDiNascita = Convert.ToInt32(nudMeseNascita.Value); // prende il valore del mese di nascita
+            int annoDiNascita = Convert.ToInt32(nudAnnoNascita.Value); // prende il valore dell'anno di nascita
+
+            if (txtNomePaziente.Text == "" || txtCognomePaziente.Text == "" || txtIbanPaziente.Text == "")
+            {
+                MessageBox.Show("Non hai inserito tutti i dati", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (controllaLettere(txtNomePaziente.Text) && controllaLettere(txtCognomePaziente.Text))
+                {
+                    paziente._nome = txtNomePaziente.Text;
+                    paziente._cognome = txtCognomePaziente.Text;
+                    paziente._giornoNascita = giornoDiNascita;
+                    paziente._meseNascita = meseDiNascita;
+                    paziente._annoNascita = annoDiNascita;
+
+                    // verifica che l'iban sia di 27 caratteri
+                    if (txtIbanPaziente.Text.Length != 27)
+                    return false;
+
+                    paziente._IBAN = txtIbanPaziente.Text.ToUpper();
+
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Nome e cognome devono essere composti solo da lettere", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            
+        }
+
+
+
+
+
     }
 }
