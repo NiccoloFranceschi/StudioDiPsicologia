@@ -20,6 +20,8 @@ namespace StudioDiPsicologia
         private void Form1_Load(object sender, EventArgs e)
         {
             pbOrario.ForeColor = Color.White;
+            //caricaListBoxPazienti(lbxPazienti);
+            //caricaListBoxMedici(lbxMedici);
         }
         
         // --- Liste ---
@@ -149,6 +151,20 @@ namespace StudioDiPsicologia
             }
             
         }
+        
+        // Funzione per rimuovere il paziente
+        public void RimuoviPaziente(ListBox lbx)
+        {
+            if (lbx.SelectedIndex == -1)
+            {
+                MessageBox.Show("Non hai selezionato nessun paziente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Pazienti.RemoveAt(lbx.SelectedIndex);
+                caricaListBoxPazienti(lbx);
+            }
+        }
 
         // Pulsante Aggiungi Paziente
         private void btnAggiungiPaziente_Click(object sender, EventArgs e)
@@ -156,6 +172,21 @@ namespace StudioDiPsicologia
             AggiungiPaziente();
         }
         
+        // Pulsante Rimuoovi Paziente
+        private void btnRimuoviPaziente_Click(object sender, EventArgs e)
+        {
+            // Controllo se è stato selezionato un paziente
+            if (lbxPazienti.SelectedIndex == -1)
+            {
+                MessageBox.Show("Non hai selezionato nessun paziente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                RimuoviPaziente(lbxPazienti);
+            }
+        }
+        
+        // 111111111111111111111111111
 
         // --- Medico ---
         // Funzione per aggiungere il Medico
@@ -185,10 +216,26 @@ namespace StudioDiPsicologia
         {
             AggiungiMedico();
         }
+        
+        // Funzione per rimuovere un medico
+        public void RimuoviMedico(ListBox lbx)
+        {
+            if (lbx.SelectedIndex == -1)
+            {
+                MessageBox.Show("Non hai selezionato nessun paziente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Medici.RemoveAt(lbx.SelectedIndex);
+                caricaListBoxMedici(lbx);
+            }
+        }
 
-
-
-
+        // Pulsante Rimuovi Medico
+        private void btnRimuoviMedico_Click(object sender, EventArgs e)
+        {
+            RimuoviMedico(lbxMedici);
+        } 
 
 
 
@@ -210,6 +257,8 @@ namespace StudioDiPsicologia
                 lst.Items.Add(medico._nome + " " + medico._cognome);
             }
         }
+
+
         
     }
 }
