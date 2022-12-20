@@ -23,7 +23,6 @@ namespace StudioDiPsicologia
             pbOrario.ForeColor = Color.White;
         }
 
-
         //  --- Orologio ---
         // Event tick per l'orologio nella home
         private void Orologio_Tick(object sender, EventArgs e)
@@ -81,26 +80,31 @@ namespace StudioDiPsicologia
             return null;
         }
 
-        // Funzione per controllare se sono state inserite solo lettere
-        private bool controllaLettere(string testo)
+
+        // --- Controlli TextBox ---
+        // Funzioni per controllare se sono state inserite solo lettere
+        private void txtNomePaziente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (testo.All(char.IsLetter))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }    
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
+        }
+        private void txtCognomePaziente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
+        }
+        private void txtIbanPaziente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !char.IsLetter(e.KeyChar)) e.Handled = true;
         }
 
+
+        // --- Paziente ---
         // Funzione per aggiungere il paziente
         public void AggiungiPaziente()
         {
-            Paziente = new Paziente();
-            int giornoDiNascita = Convert.ToInt32(nudGiornoNascita.Value); // prende il valore del giorno di nascita
-            int meseDiNascita = Convert.ToInt32(nudMeseNascita.Value); // prende il valore del mese di nascita
-            int annoDiNascita = Convert.ToInt32(nudAnnoNascita.Value); // prende il valore dell'anno di nascita
+            Paziente pazientino = new Paziente();
+            int giornoDiNascita = 12; // prende il valore del giorno di nascita
+            int meseDiNascita = 3; // prende il valore del mese di nascita
+            int annoDiNascita = 2; // prende il valore dell'anno di nascita
 
             if (txtNomePaziente.Text == "" || txtCognomePaziente.Text == "" || txtIbanPaziente.Text == "")
             {
@@ -108,31 +112,35 @@ namespace StudioDiPsicologia
             }
             else
             {
-                if (controllaLettere(txtNomePaziente.Text) && controllaLettere(txtCognomePaziente.Text))
+                pazientino._nome = txtNomePaziente.Text;
+                pazientino._cognome = txtCognomePaziente.Text;
+                pazientino._giornoDiNascita = giornoDiNascita;
+                pazientino._meseDiNascitaa = meseDiNascita;
+                pazientino._annoDiNascita = annoDiNascita;
+
+                // verifica che l'iban sia di 27 caratteri
+                if (txtIbanPaziente.Text.Length != 27)
                 {
-                    paziente._nome = txtNomePaziente.Text;
-                    paziente._cognome = txtCognomePaziente.Text;
-                    paziente._giornoNascita = giornoDiNascita;
-                    paziente._meseNascita = meseDiNascita;
-                    paziente._annoNascita = annoDiNascita;
-
-                    // verifica che l'iban sia di 27 caratteri
-                    if (txtIbanPaziente.Text.Length != 27)
-                    return false;
-
-                    paziente._IBAN = txtIbanPaziente.Text.ToUpper();
-
-                    return true;
+                    MessageBox.Show("L'IBAN non è valido", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Nome e cognome devono essere composti solo da lettere", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    pazientino._IBAN = txtIbanPaziente.Text.ToUpper();
                 }
             }
             
         }
 
+        private void btnAggiungiPaziente_Click(object sender, EventArgs e)
+        {
+            AggiungiPaziente();
+        }
 
+        // --- Medico ---
+        public void AggiungiMedico()
+        {
+            
+        }
 
 
 
