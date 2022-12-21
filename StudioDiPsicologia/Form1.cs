@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -196,7 +197,7 @@ namespace StudioDiPsicologia
 
         // --- Medico ---
         // Funzione per aggiungere il Medico
-        public void AggiungiMedico()
+        public void AggiungiMedico(NumericUpDown nud, NumericUpDown nud1)
         {
             Medico medichetto = new Medico();
 
@@ -206,21 +207,29 @@ namespace StudioDiPsicologia
             }
             else
             {
-                medichetto.nome = txtNomeMedico.Text;
-                medichetto.cognome = txtCognomeMedico.Text;
-                medichetto.specializzazione = txtSpecializzazioneMedico.Text;
-                medichetto.orarioInizio = Convert.ToInt32(nInizioMedico.Value);
-                medichetto.orarioFine = Convert.ToInt32(nFineMedico.Value);
-                
-                Medici.Add(medichetto);
-                caricaMedici(lbxMedici, cmbMedico);
+                if (nud.Value < orarioApertura || nud1.Value > orarioChiusura)
+                {
+                    MessageBox.Show("Gli orari inseriti non sono validi", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    medichetto.nome = txtNomeMedico.Text;
+                    medichetto.cognome = txtCognomeMedico.Text;
+                    medichetto.specializzazione = txtSpecializzazioneMedico.Text;
+                    medichetto.orarioInizio = Convert.ToInt32(nInizioMedico.Value);
+                    medichetto.orarioFine = Convert.ToInt32(nFineMedico.Value);
+                    
+                    Medici.Add(medichetto);
+                    svuotaMedico(txtNomeMedico, txtCognomeMedico, txtSpecializzazioneMedico, nInizioMedico, nFineMedico);
+                    caricaMedici(lbxMedici, cmbMedico);
+                }
             }
         }
 
         // Pulsante Aggiungi Medico
         private void btnAggiungiMedico_Click(object sender, EventArgs e)
         {
-            AggiungiMedico();
+            AggiungiMedico(nInizioMedico, nFineMedico);
         }
         
         // Funzione per rimuovere un medico
@@ -248,31 +257,65 @@ namespace StudioDiPsicologia
         // Funzione per aggiungere un appuntamento
         public void AggiungiAppuntamento()
         {
-            // devo aggiungere un appuntamento controllando paziente e medico selezionati
             Appuntamento appuntamentino = new Appuntamento();
+            if (cmbMedico.SelectedIndex == -1 || cmbPaziente.SelectedIndex == -1 || nudOrario.Value == 0 || txtMotivazione.Text == "")
+            {
+                MessageBox.Show("Non hai inserito tutti i dati", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                appuntamentino.paziente = Pazienti[cmbPaziente.SelectedIndex];
+                appuntamentino.medico = Medici[cmbMedico.SelectedIndex];
+                appuntamentino.orario = Convert.ToInt32(nudOrario.Value);
+                appuntamentino.data = dtpAppuntamento.Text;
+                appuntamentino.note = txtMotivazione.Text;
             
-            appuntamentino.paziente = Pazienti[cmbPaziente.SelectedIndex];
-            appuntamentino.medico = Medici[cmbMedico.SelectedIndex];
+                Appuntamenti.Add(appuntamentino);
+                svuotaAppuntamento(cmbMedico, cmbPaziente, nudOrario, txtMotivazione, dtpAppuntamento);
+                caricaListBoxAppuntamenti(lbxAppuntamenti);
+            }
             
-            Appuntamenti.Add(appuntamentino);
-            svuotaAppuntamento(cmbMedico, cmbPaziente, nudOrario, txtMotivazione, dtpAppuntamento);
-            caricaListBoxAppuntamenti(lbxAppuntamenti);
         }
         
         
         // Pulsante Aggiungi Appuntamento
         private void btnAggiungiAppuntamento_Click(object sender, EventArgs e)
         {
-            AggiungiAppuntamento();
+            if (!esiste()) // Controllo se esiste già un appuntamento
+            {
+                AggiungiAppuntamento();
+                
+            }
+            else
+            {
+                MessageBox.Show("Esiste già un appuntamento, cambiare orario", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        // Funzione per controllare se un appuntamento esiste già
+        private bool esiste()
+        {
+            int orario = Convert.ToInt32(nudOrario.Value);
+            for (int i = 0; i < Appuntamenti.Count; i++)
+            {
+                if (Appuntamenti[i].data == dtpAppuntamento.Text)
+                {
+                    if (Appuntamenti[i].orario == orario)
+                    {
+                        return true;
+                    }
+                }
+            }
+                return false;
+            }
 
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+        //  --- Funzioni Grafiche e Caricamenti ---
         public void svuotaAppuntamento(ComboBox cmb, ComboBox cmb1, NumericUpDown nn, TextBox txt, DateTimePicker dtp)
         {
             cmb.SelectedIndex = -1;
@@ -281,20 +324,19 @@ namespace StudioDiPsicologia
             txt.Text = "";
             dtp.Value = DateTime.Now;
         }
-        public void svuotaMedico(ComboBox cmb, ComboBox cmb1, NumericUpDown nn, NumericUpDown nn1, TextBox txt)
+        public void svuotaMedico(TextBox txt, TextBox txt1, TextBox txt2, NumericUpDown nn, NumericUpDown nn1)
         {
-            // Combobox
-            cmb.SelectedIndex = -1;
-            cmb1.SelectedIndex = -1;
+            // TextBox
+            txt.Text = "";
+            txt1.Text = "";
+            txt2.Text = "";
             
             // NumericUpDown
             nn.Value = 0;
             nn1.Value = 0;
             
-            // TextBox
-            txt.Text = "";
+            
         }
-
         public void caricaPazienti(ListBox lst, ComboBox cmb)
         {
             lst.Items.Clear();
@@ -305,7 +347,6 @@ namespace StudioDiPsicologia
                 cmb.Items.Add(paziente.nome + " " + paziente.cognome);
             }
         }
-        
         public void caricaMedici(ListBox lst, ComboBox cmb)
         {
             lst.Items.Clear();
@@ -316,7 +357,6 @@ namespace StudioDiPsicologia
                 cmb.Items.Add(medico.nome + " " + medico.cognome);
             }
         }
-        
         public void caricaListBoxAppuntamenti(ListBox lst)
         {
             lst.Items.Clear();

@@ -31,11 +31,13 @@ namespace StudioDiPsicologia
         {
             FileStream fs = new FileStream("Appuntamenti.bin", FileMode.OpenOrCreate);
             BinaryWriter bw = new BinaryWriter(fs);
-            
+
             bw.Write(medico.nome);
-            bw.Write(medico.cognome);
             bw.Write(medico.specializzazione);
-            
+            bw.Write(paziente.nome);
+            bw.Write(data);
+            bw.Write(note);
+            bw.Write(orario);
         }
         
 
