@@ -12,9 +12,9 @@ namespace StudioDiPsicologia
         string _nome;
         string _cognome;
         string _specializzazione;
+        bool _inLavoro;
         int _orarioInizio;
         int _orarioFine;
-        bool _inLavoro;
 
         // Nome e cognome
         public string nome { get { return _nome; } set { _nome = value; } }
@@ -30,16 +30,16 @@ namespace StudioDiPsicologia
 
 
         // Costruttori
-        public Medico(string nome, string cognome, string specializzazione, int orarioInizio, int orarioFine, bool inLavoro)
+        public Medico(string nome, string cognome, string specializzazione, bool inLavoro, int orarioInizio, int orarioFine )
         {
             this.nome = nome;
             this.cognome = cognome;
             this.specializzazione = specializzazione;
+            this.inLavoro = inLavoro;
             this.orarioInizio = orarioInizio;
             this.orarioFine = orarioFine;
-            this.inLavoro = inLavoro;
         }
-        public Medico() : this("Pietro", "Roberto", "Robertare", 0, 0, true) { }
+        public Medico() : this("Pietro", "Roberto", "Robertare", true, 8, 9) { }
 
         // Salvo il medico in un file binario
         public void salvaMedico()
@@ -49,12 +49,12 @@ namespace StudioDiPsicologia
         
             fs.Seek(0, SeekOrigin.End);
             
-            bw.Write(nome);
-            bw.Write(cognome);
-            bw.Write(specializzazione);
+            bw.Write(formattaStringa(nome));
+            bw.Write(formattaStringa(cognome));
+            bw.Write(formattaStringa(specializzazione));
+            bw.Write(inLavoro);
             bw.Write(orarioInizio);
             bw.Write(orarioFine);
-            bw.Write(inLavoro);
             bw.Close();
             
         }
@@ -65,9 +65,20 @@ namespace StudioDiPsicologia
             return $"{nome}, {cognome}, {specializzazione}, {orarioInizio}, {orarioFine}";
         }
         
-        public int getLunghezza()
+        private string formattaStringa(string stringa)
         {
-            return 72;
+            if (stringa.Length > 20)
+                stringa  = stringa.Substring(0, 20);
+            else if (stringa.Length < 20)
+                stringa = stringa.PadRight(20);
+            return stringa;
+        }
+        
+        private string formattaNumero(int numero)
+        {
+            if (numero < 10)
+                return $"{0}{numero}";
+            return numero.ToString();
         }
         
     }

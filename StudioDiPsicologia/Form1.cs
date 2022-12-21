@@ -241,6 +241,7 @@ namespace StudioDiPsicologia
                     medichetto.nome = txtNomeMedico.Text;
                     medichetto.cognome = txtCognomeMedico.Text;
                     medichetto.specializzazione = txtSpecializzazioneMedico.Text;
+                    medichetto.inLavoro = true;
                     
                     if (nud1.Value > nud.Value) // Controllo se gli orari sono invertiti e li salvo al contrario
                     {
@@ -283,27 +284,28 @@ namespace StudioDiPsicologia
         // Funzione per rimuovere un medico
         public void RimuoviMedico(ListBox lbx)
         {
+            bool Lavoro = false;
             if (lbx.SelectedIndex == -1)
             {
                 MessageBox.Show("Non hai selezionato nessun paziente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                Medico med = new Medico();
                 FileStream fs = new FileStream("Medici.bin", FileMode.OpenOrCreate);
                 BinaryWriter bw = new BinaryWriter(fs);
+                BinaryReader br = new BinaryReader(fs);
 
                 while (fs.Position < fs.Length)
                 {
-                    fs.Seek(med.getLunghezza(), SeekOrigin.Current);
+                    fs.Seek(63, SeekOrigin.Current);
+                    //string nome = br.ReadString();
 
                     if (lbxMedici.SelectedItem.Equals(Medici[lbx.SelectedIndex]))
                     {
-                        fs.Seek(-med.getLunghezza(), SeekOrigin.Current);
-                        bw.Write("");
+                        fs.Seek(-(63 + 4 + 4 + 1), SeekOrigin.Current);
+                        bw.Write(Lavoro);
                         fs.Close();
                     }
-
                 }
                 fs.Close();
                 caricaMedici(lbxMedici, cmbMedico);
@@ -401,12 +403,16 @@ namespace StudioDiPsicologia
 
 
         //  --- Funzioni Grafiche e Caricamenti ---
-        public void svuotaAppuntamento(ComboBox cmb, ComboBox cmb1, NumericUpDown nn, TextBox txt, DateTimePicker dtp)
+        public void svuotaAppuntamento(ComboBox cmb, ComboBox cmb1, NumericUpDown nud, TextBox txt, DateTimePicker dtp)
         {
+            // Combobox
             cmb.SelectedIndex = -1;
             cmb1.SelectedIndex = -1;
-            nn.Value = 0;
+            // NumericUpDown
+            nud.Value = 0;
+            // TxtBox
             txt.Text = "";
+            // DateTimePicker
             dtp.Value = DateTime.Now;
         }
         public void svuotaMedico(TextBox txt, TextBox txt1, TextBox txt2, NumericUpDown nn, NumericUpDown nn1)
@@ -419,8 +425,6 @@ namespace StudioDiPsicologia
             // NumericUpDown
             nn.Value = 0;
             nn1.Value = 0;
-            
-            
         }
         public void svuotaPaziente(TextBox txt, TextBox txt1, TextBox txt2, DateTimePicker dtp)
         {
@@ -474,11 +478,11 @@ namespace StudioDiPsicologia
                 medico.nome = br.ReadString().Trim(' ');
                 medico.cognome = br.ReadString().Trim(' ');
                 medico.specializzazione = br.ReadString().Trim(' ');
+                medico.inLavoro = br.ReadBoolean();
                 medico.orarioInizio = br.ReadInt32();
                 medico.orarioFine = br.ReadInt32();
-                medico.inLavoro = br.ReadBoolean();
 
-                fs.Seek(11, SeekOrigin.Current);
+                fs.Seek(0, SeekOrigin.Current);
                 Medici.Add(medico);
             }
             fs.Close();
@@ -486,10 +490,14 @@ namespace StudioDiPsicologia
             // Carico i Medici in ListBox e ComboBox
             lst.Items.Clear();
             cmb.Items.Clear();
-            foreach (Medico medico in Medici)
+
+            for (int i = 0; i < Medici.Count; i++)
             {
-                lst.Items.Add(medico.nome + " " + medico.cognome);
-                cmb.Items.Add(medico.nome + " " + medico.cognome);
+                if (Medici[i].inLavoro)
+                {
+                    lst.Items.Add(Medici[i].nome + " " + Medici[i].cognome);
+                    cmb.Items.Add(Medici[i].nome + " " + Medici[i].cognome);
+                }
             }
         }
         public void caricaListBoxAppuntamenti(ListBox lst)
