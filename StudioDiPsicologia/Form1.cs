@@ -20,8 +20,8 @@ namespace StudioDiPsicologia
         private void Form1_Load(object sender, EventArgs e)
         {
             pbOrario.ForeColor = Color.White;
-            caricaListBoxPazienti(lbxPazienti);
-            caricaListBoxMedici(lbxMedici);
+            caricaPazienti(lbxPazienti, cmbPaziente);
+            caricaMedici(lbxMedici, cmbMedico);
             caricaListBoxAppuntamenti(lbxAppuntamenti);
         }
         
@@ -29,7 +29,11 @@ namespace StudioDiPsicologia
         List<Medico> Medici = new List<Medico>();
         List<Paziente> Pazienti = new List<Paziente>();
         List<Appuntamento> Appuntamenti = new List<Appuntamento>();
-
+        
+        // --- Orario Studio ---
+        int orarioApertura = 8;
+        int orarioChiusura = 20;
+        
         
         //  --- Orologio ---
         // Event tick per l'orologio nella home
@@ -148,7 +152,7 @@ namespace StudioDiPsicologia
                     pazientino.IBAN = txtIbanPaziente.Text.ToUpper();
                     
                     Pazienti.Add(pazientino);
-                    caricaListBoxPazienti(lbxPazienti);
+                    caricaPazienti(lbxPazienti, cmbPaziente);
                 }
             }
             
@@ -164,7 +168,7 @@ namespace StudioDiPsicologia
             else
             {
                 Pazienti.RemoveAt(lbx.SelectedIndex);
-                caricaListBoxPazienti(lbx);
+                caricaPazienti(lbxPazienti, cmbPaziente);
             }
         }
 
@@ -188,7 +192,7 @@ namespace StudioDiPsicologia
             }
         }
         
-        // 111111111111111111111111111
+        // 111111111111111111111111111 - Test IBAN
 
         // --- Medico ---
         // Funzione per aggiungere il Medico
@@ -209,7 +213,7 @@ namespace StudioDiPsicologia
                 medichetto.orarioFine = Convert.ToInt32(nFineMedico.Value);
                 
                 Medici.Add(medichetto);
-                caricaListBoxMedici(lbxMedici);
+                caricaMedici(lbxMedici, cmbMedico);
             }
         }
 
@@ -229,7 +233,7 @@ namespace StudioDiPsicologia
             else
             {
                 Medici.RemoveAt(lbx.SelectedIndex);
-                caricaListBoxMedici(lbx);
+                caricaMedici(lbxMedici, cmbMedico);
             }
         }
 
@@ -242,25 +246,74 @@ namespace StudioDiPsicologia
         
         // --- Appuntamento ---
         // Funzione per aggiungere un appuntamento
+        public void AggiungiAppuntamento()
+        {
+            // devo aggiungere un appuntamento controllando paziente e medico selezionati
+            Appuntamento appuntamentino = new Appuntamento();
+            
+            appuntamentino.paziente = Pazienti[cmbPaziente.SelectedIndex];
+            appuntamentino.medico = Medici[cmbMedico.SelectedIndex];
+            
+            Appuntamenti.Add(appuntamentino);
+            svuotaAppuntamento(cmbMedico, cmbPaziente, nudOrario, txtMotivazione, dtpAppuntamento);
+            caricaListBoxAppuntamenti(lbxAppuntamenti);
+        }
         
+        
+        // Pulsante Aggiungi Appuntamento
+        private void btnAggiungiAppuntamento_Click(object sender, EventArgs e)
+        {
+            AggiungiAppuntamento();
+        }
 
 
+        
+        
+        
+        
+        
+        
+        public void svuotaAppuntamento(ComboBox cmb, ComboBox cmb1, NumericUpDown nn, TextBox txt, DateTimePicker dtp)
+        {
+            cmb.SelectedIndex = -1;
+            cmb1.SelectedIndex = -1;
+            nn.Value = 0;
+            txt.Text = "";
+            dtp.Value = DateTime.Now;
+        }
+        public void svuotaMedico(ComboBox cmb, ComboBox cmb1, NumericUpDown nn, NumericUpDown nn1, TextBox txt)
+        {
+            // Combobox
+            cmb.SelectedIndex = -1;
+            cmb1.SelectedIndex = -1;
+            
+            // NumericUpDown
+            nn.Value = 0;
+            nn1.Value = 0;
+            
+            // TextBox
+            txt.Text = "";
+        }
 
-        public void caricaListBoxPazienti(ListBox lst)
+        public void caricaPazienti(ListBox lst, ComboBox cmb)
         {
             lst.Items.Clear();
+            cmb.Items.Clear();
             foreach (Paziente paziente in Pazienti)
             {
                 lst.Items.Add(paziente.nome + " " + paziente.cognome);
+                cmb.Items.Add(paziente.nome + " " + paziente.cognome);
             }
         }
         
-        public void caricaListBoxMedici(ListBox lst)
+        public void caricaMedici(ListBox lst, ComboBox cmb)
         {
             lst.Items.Clear();
+            cmb.Items.Clear();
             foreach (Medico medico in Medici)
             {
                 lst.Items.Add(medico.nome + " " + medico.cognome);
+                cmb.Items.Add(medico.nome + " " + medico.cognome);
             }
         }
         
@@ -269,11 +322,9 @@ namespace StudioDiPsicologia
             lst.Items.Clear();
             foreach (Appuntamento appuntamento in Appuntamenti)
             {
-                lst.Items.Add(appuntamento.medico + " " + appuntamento.paziente);
+                lst.Items.Add(appuntamento.medico.nome + " " + appuntamento.paziente.nome);
             }
         }
 
-
-        
     }
 }

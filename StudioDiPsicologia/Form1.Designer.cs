@@ -86,13 +86,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbMedico = new System.Windows.Forms.ComboBox();
+            this.cmbPaziente = new System.Windows.Forms.ComboBox();
+            this.txtMotivazione = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.nudOrario = new System.Windows.Forms.NumericUpDown();
+            this.dtpAppuntamento = new System.Windows.Forms.DateTimePicker();
+            this.btnAggiungiAppuntamento = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -110,7 +110,7 @@
             this.panel5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudOrario)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
@@ -795,13 +795,13 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.cmbMedico);
+            this.groupBox3.Controls.Add(this.cmbPaziente);
+            this.groupBox3.Controls.Add(this.txtMotivazione);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.numericUpDown1);
-            this.groupBox3.Controls.Add(this.dateTimePicker1);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.nudOrario);
+            this.groupBox3.Controls.Add(this.dtpAppuntamento);
+            this.groupBox3.Controls.Add(this.btnAggiungiAppuntamento);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label19);
@@ -814,12 +814,30 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Aggiungi Appuntamento";
             // 
-            // textBox1
+            // cmbMedico
             // 
-            this.textBox1.Location = new System.Drawing.Point(11, 228);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 20);
-            this.textBox1.TabIndex = 37;
+            this.cmbMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMedico.FormattingEnabled = true;
+            this.cmbMedico.Location = new System.Drawing.Point(11, 115);
+            this.cmbMedico.Name = "cmbMedico";
+            this.cmbMedico.Size = new System.Drawing.Size(307, 21);
+            this.cmbMedico.TabIndex = 42;
+            // 
+            // cmbPaziente
+            // 
+            this.cmbPaziente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPaziente.FormattingEnabled = true;
+            this.cmbPaziente.Location = new System.Drawing.Point(11, 59);
+            this.cmbPaziente.Name = "cmbPaziente";
+            this.cmbPaziente.Size = new System.Drawing.Size(307, 21);
+            this.cmbPaziente.TabIndex = 41;
+            // 
+            // txtMotivazione
+            // 
+            this.txtMotivazione.Location = new System.Drawing.Point(11, 228);
+            this.txtMotivazione.Name = "txtMotivazione";
+            this.txtMotivazione.Size = new System.Drawing.Size(307, 20);
+            this.txtMotivazione.TabIndex = 37;
             // 
             // label15
             // 
@@ -833,49 +851,36 @@
             this.label15.TabIndex = 36;
             this.label15.Text = "Motivazione";
             // 
-            // numericUpDown1
+            // nudOrario
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(237, 173);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(81, 20);
-            this.numericUpDown1.TabIndex = 35;
+            this.nudOrario.Location = new System.Drawing.Point(237, 173);
+            this.nudOrario.Name = "nudOrario";
+            this.nudOrario.Size = new System.Drawing.Size(81, 20);
+            this.nudOrario.TabIndex = 35;
             // 
-            // dateTimePicker1
+            // dtpAppuntamento
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(11, 173);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(220, 20);
-            this.dateTimePicker1.TabIndex = 34;
+            this.dtpAppuntamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpAppuntamento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpAppuntamento.Location = new System.Drawing.Point(11, 173);
+            this.dtpAppuntamento.Name = "dtpAppuntamento";
+            this.dtpAppuntamento.Size = new System.Drawing.Size(220, 20);
+            this.dtpAppuntamento.TabIndex = 34;
             // 
-            // button1
+            // btnAggiungiAppuntamento
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(72, 275);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 43);
-            this.button1.TabIndex = 40;
-            this.button1.Text = "Aggiungi";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(11, 115);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(307, 20);
-            this.textBox2.TabIndex = 26;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(11, 60);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(307, 20);
-            this.textBox3.TabIndex = 25;
+            this.btnAggiungiAppuntamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAggiungiAppuntamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.btnAggiungiAppuntamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAggiungiAppuntamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAggiungiAppuntamento.ForeColor = System.Drawing.Color.Transparent;
+            this.btnAggiungiAppuntamento.Location = new System.Drawing.Point(72, 275);
+            this.btnAggiungiAppuntamento.Name = "btnAggiungiAppuntamento";
+            this.btnAggiungiAppuntamento.Size = new System.Drawing.Size(185, 43);
+            this.btnAggiungiAppuntamento.TabIndex = 40;
+            this.btnAggiungiAppuntamento.Text = "Aggiungi";
+            this.btnAggiungiAppuntamento.UseVisualStyleBackColor = false;
+            this.btnAggiungiAppuntamento.Click += new System.EventHandler(this.btnAggiungiAppuntamento_Click);
             // 
             // label16
             // 
@@ -965,9 +970,12 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudOrario)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.ComboBox cmbPaziente;
+        private System.Windows.Forms.ComboBox cmbMedico;
 
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DateTimePicker dateTimePicker3;
@@ -984,21 +992,19 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label21;
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMotivazione;
 
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ListBox lbxAppuntamenti;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudOrario;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnAggiungiAppuntamento;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpAppuntamento;
 
         #endregion
 
