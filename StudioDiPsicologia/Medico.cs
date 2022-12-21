@@ -44,7 +44,7 @@ namespace StudioDiPsicologia
         // Salvo il medico in un file binario
         public void salvaMedico()
         {
-            FileStream fs = new FileStream("medici.bin", FileMode.OpenOrCreate);
+            FileStream fs = new FileStream("Medici.bin", FileMode.OpenOrCreate);
             BinaryWriter bw = new BinaryWriter(fs);
         
             fs.Seek(0, SeekOrigin.End);
@@ -63,6 +63,11 @@ namespace StudioDiPsicologia
         public override string ToString()
         {
             return $"{nome}, {cognome}, {specializzazione}, {orarioInizio}, {orarioFine}";
+        }
+        
+        public int getLunghezza()
+        {
+            return 72;
         }
         
     }

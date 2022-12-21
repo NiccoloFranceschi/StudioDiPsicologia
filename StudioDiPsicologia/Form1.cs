@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
@@ -127,11 +128,14 @@ namespace StudioDiPsicologia
         public void AggiungiPaziente()
         {
             Paziente pazientino = new Paziente();
-            int giornoDiNascita = 12; // prende il valore del giorno di nascita
-            int meseDiNascita = 3; // prende il valore del mese di nascita
-            int annoDiNascita = 2; // prende il valore dell'anno di nascita
+            
+            // Data di nascita
+            DateTime dataNascita = dtpPaziente.Value;
+            int giornoDiNascita = dataNascita.Date.Day;
+            int meseDiNascita = dataNascita.Date.Month; 
+            int annoDiNascita = dataNascita.Date.Year; 
 
-            if (txtNomePaziente.Text == "" || txtCognomePaziente.Text == "" || txtIbanPaziente.Text == "")
+            if (txtNomePaziente.Text == "" || txtCognomePaziente.Text == "" || txtIbanPaziente.Text == "") // Controllo che non ci siano oggetti vuoti
             {
                 MessageBox.Show("Non hai inserito tutti i dati", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -143,8 +147,7 @@ namespace StudioDiPsicologia
                 pazientino.meseDiNascita = meseDiNascita;
                 pazientino.annoDiNascita = annoDiNascita;
 
-                // verifica che l'iban sia di 27 caratteri
-                if (txtIbanPaziente.Text.Length != 27)
+                if (txtIbanPaziente.Text.Length != 27) // Controllo che l'IBAN sia di 27 caratteri
                 {
                     MessageBox.Show("L'IBAN non è valido", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -153,6 +156,8 @@ namespace StudioDiPsicologia
                     pazientino.IBAN = txtIbanPaziente.Text.ToUpper();
                     
                     Pazienti.Add(pazientino);
+                    svuotaPaziente(txtNomePaziente, txtCognomePaziente, txtIbanPaziente, dtpPaziente);
+                    pazientino.SalvaPaziente();
                     caricaPazienti(lbxPazienti, cmbPaziente);
                 }
             }
@@ -176,7 +181,15 @@ namespace StudioDiPsicologia
         // Pulsante Aggiungi Paziente
         private void btnAggiungiPaziente_Click(object sender, EventArgs e)
         {
-            AggiungiPaziente();
+            if (!esistePaziente())
+            {
+                AggiungiPaziente();
+            }
+            else
+            {
+                MessageBox.Show("Il paziente è già presente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         
         // Pulsante Rimuoovi Paziente
@@ -191,6 +204,18 @@ namespace StudioDiPsicologia
             {
                 RimuoviPaziente(lbxPazienti);
             }
+        }
+        
+        private bool esistePaziente()
+        {
+            for (int i = 0; i < Pazienti.Count; i++)
+            {
+                if (Pazienti[i].IBAN == txtIbanPaziente.Text)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
         
         // 111111111111111111111111111 - Test IBAN
@@ -216,12 +241,27 @@ namespace StudioDiPsicologia
                     medichetto.nome = txtNomeMedico.Text;
                     medichetto.cognome = txtCognomeMedico.Text;
                     medichetto.specializzazione = txtSpecializzazioneMedico.Text;
-                    medichetto.orarioInizio = Convert.ToInt32(nInizioMedico.Value);
-                    medichetto.orarioFine = Convert.ToInt32(nFineMedico.Value);
                     
-                    Medici.Add(medichetto);
-                    svuotaMedico(txtNomeMedico, txtCognomeMedico, txtSpecializzazioneMedico, nInizioMedico, nFineMedico);
-                    caricaMedici(lbxMedici, cmbMedico);
+                    if (nud1.Value > nud.Value) // Controllo se gli orari sono invertiti e li salvo al contrario
+                    {
+                        medichetto.orarioInizio = Convert.ToInt32(nud1.Value);
+                        medichetto.orarioFine = Convert.ToInt32(nud.Value);
+                        
+                        Medici.Add(medichetto);
+                        svuotaMedico(txtNomeMedico, txtCognomeMedico, txtSpecializzazioneMedico, nInizioMedico, nFineMedico);
+                        medichetto.salvaMedico();
+                        caricaMedici(lbxMedici, cmbMedico);
+                    }
+                    else
+                    {
+                        medichetto.orarioInizio = Convert.ToInt32(nud.Value);
+                        medichetto.orarioFine = Convert.ToInt32(nud1.Value);
+                        
+                        Medici.Add(medichetto);
+                        svuotaMedico(txtNomeMedico, txtCognomeMedico, txtSpecializzazioneMedico, nInizioMedico, nFineMedico);
+                        medichetto.salvaMedico();
+                        caricaMedici(lbxMedici, cmbMedico);
+                    }
                 }
             }
         }
@@ -229,7 +269,15 @@ namespace StudioDiPsicologia
         // Pulsante Aggiungi Medico
         private void btnAggiungiMedico_Click(object sender, EventArgs e)
         {
-            AggiungiMedico(nInizioMedico, nFineMedico);
+            if (!esisteMedico())
+            {
+                AggiungiMedico(nInizioMedico, nFineMedico);
+            }
+            else
+            {
+                MessageBox.Show("Il medico è già presente", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         
         // Funzione per rimuovere un medico
@@ -241,7 +289,23 @@ namespace StudioDiPsicologia
             }
             else
             {
-                Medici.RemoveAt(lbx.SelectedIndex);
+                Medico med = new Medico();
+                FileStream fs = new FileStream("Medici.bin", FileMode.OpenOrCreate);
+                BinaryWriter bw = new BinaryWriter(fs);
+
+                while (fs.Position < fs.Length)
+                {
+                    fs.Seek(med.getLunghezza(), SeekOrigin.Current);
+
+                    if (lbxMedici.SelectedItem.Equals(Medici[lbx.SelectedIndex]))
+                    {
+                        fs.Seek(-med.getLunghezza(), SeekOrigin.Current);
+                        bw.Write("");
+                        fs.Close();
+                    }
+
+                }
+                fs.Close();
                 caricaMedici(lbxMedici, cmbMedico);
             }
         }
@@ -252,6 +316,21 @@ namespace StudioDiPsicologia
             RimuoviMedico(lbxMedici);
         } 
 
+        private bool esisteMedico()
+        {
+            for (int i = 0; i < Medici.Count; i++)
+            {
+                if (Medici[i].nome == txtNomeMedico.Text)
+                {
+                    if (Medici[i].specializzazione == txtSpecializzazioneMedico.Text)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        
         
         // --- Appuntamento ---
         // Funzione per aggiungere un appuntamento
@@ -264,24 +343,30 @@ namespace StudioDiPsicologia
             }
             else
             {
-                appuntamentino.paziente = Pazienti[cmbPaziente.SelectedIndex];
-                appuntamentino.medico = Medici[cmbMedico.SelectedIndex];
-                appuntamentino.orario = Convert.ToInt32(nudOrario.Value);
-                appuntamentino.data = dtpAppuntamento.Text;
-                appuntamentino.note = txtMotivazione.Text;
-            
-                Appuntamenti.Add(appuntamentino);
-                svuotaAppuntamento(cmbMedico, cmbPaziente, nudOrario, txtMotivazione, dtpAppuntamento);
-                caricaListBoxAppuntamenti(lbxAppuntamenti);
+                if (nudOrario.Value < Medici[cmbMedico.SelectedIndex].orarioInizio || nudOrario.Value > Medici[cmbMedico.SelectedIndex].orarioFine)
+                {
+                    MessageBox.Show("Controlla l'orario inserito", "Errore", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                else
+                {
+                    appuntamentino.paziente = Pazienti[cmbPaziente.SelectedIndex];
+                    appuntamentino.medico = Medici[cmbMedico.SelectedIndex];
+                    appuntamentino.orario = Convert.ToInt32(nudOrario.Value);
+                    appuntamentino.data = dtpAppuntamento.Text;
+                    appuntamentino.note = txtMotivazione.Text;
+
+                    Appuntamenti.Add(appuntamentino);
+                    svuotaAppuntamento(cmbMedico, cmbPaziente, nudOrario, txtMotivazione, dtpAppuntamento);
+                    caricaListBoxAppuntamenti(lbxAppuntamenti);
+                }
             }
-            
         }
-        
         
         // Pulsante Aggiungi Appuntamento
         private void btnAggiungiAppuntamento_Click(object sender, EventArgs e)
         {
-            if (!esiste()) // Controllo se esiste già un appuntamento
+            if (!esisteAppuntamento()) // Controllo se esiste già un appuntamento
             {
                 AggiungiAppuntamento();
                 
@@ -293,7 +378,7 @@ namespace StudioDiPsicologia
         }
 
         // Funzione per controllare se un appuntamento esiste già
-        private bool esiste()
+        private bool esisteAppuntamento()
         {
             int orario = Convert.ToInt32(nudOrario.Value);
             for (int i = 0; i < Appuntamenti.Count; i++)
@@ -337,8 +422,36 @@ namespace StudioDiPsicologia
             
             
         }
+        public void svuotaPaziente(TextBox txt, TextBox txt1, TextBox txt2, DateTimePicker dtp)
+        {
+            txt.Text = "";
+            txt1.Text = "";
+            txt2.Text = "";
+            dtp.Value = DateTime.Now;
+        }
         public void caricaPazienti(ListBox lst, ComboBox cmb)
         {
+            // Leggo dal File Binario
+            Pazienti.Clear();
+            FileStream fs = new FileStream("Pazienti.bin", FileMode.OpenOrCreate);
+            BinaryReader br = new BinaryReader(fs);
+
+            while (fs.Position < fs.Length)
+            {
+                Paziente pazientino = new Paziente();
+
+                pazientino.nome = br.ReadString().Trim(' ');
+                pazientino.cognome = br.ReadString().Trim(' ');
+                pazientino.giornoDiNascita = br.ReadInt32();
+                pazientino.meseDiNascita = br.ReadInt32();
+                pazientino.annoDiNascita = br.ReadInt32();
+                pazientino.IBAN = br.ReadString();
+
+                Pazienti.Add(pazientino);
+            }
+            fs.Close();
+            
+            // Carico i Pazienti in ListBox e ComboBox
             lst.Items.Clear();
             cmb.Items.Clear();
             foreach (Paziente paziente in Pazienti)
@@ -349,6 +462,28 @@ namespace StudioDiPsicologia
         }
         public void caricaMedici(ListBox lst, ComboBox cmb)
         {
+            // Leggo i Medici dal file binario
+            Medici.Clear();
+            FileStream fs = new FileStream("Medici.bin", FileMode.OpenOrCreate);
+            BinaryReader br = new BinaryReader(fs);
+
+            while (fs.Position < fs.Length)
+            {
+                Medico medico = new Medico();
+
+                medico.nome = br.ReadString().Trim(' ');
+                medico.cognome = br.ReadString().Trim(' ');
+                medico.specializzazione = br.ReadString().Trim(' ');
+                medico.orarioInizio = br.ReadInt32();
+                medico.orarioFine = br.ReadInt32();
+                medico.inLavoro = br.ReadBoolean();
+
+                fs.Seek(11, SeekOrigin.Current);
+                Medici.Add(medico);
+            }
+            fs.Close();
+            
+            // Carico i Medici in ListBox e ComboBox
             lst.Items.Clear();
             cmb.Items.Clear();
             foreach (Medico medico in Medici)

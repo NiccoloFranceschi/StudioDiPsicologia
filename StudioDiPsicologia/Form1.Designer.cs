@@ -30,11 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblSquadre = new System.Windows.Forms.Label();
+            this.lblAppuntamenti = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblMedici = new System.Windows.Forms.Label();
-            this.lblStadi = new System.Windows.Forms.Label();
-            this.lblPartite = new System.Windows.Forms.Label();
+            this.lblPazienti = new System.Windows.Forms.Label();
             this.lblHome = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,7 +50,7 @@
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAggiungiPaziente = new System.Windows.Forms.Button();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dtpPaziente = new System.Windows.Forms.DateTimePicker();
             this.txtIbanPaziente = new System.Windows.Forms.TextBox();
             this.txtCognomePaziente = new System.Windows.Forms.TextBox();
             this.txtNomePaziente = new System.Windows.Forms.TextBox();
@@ -117,30 +116,29 @@
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
-            this.panel3.Controls.Add(this.lblSquadre);
+            this.panel3.Controls.Add(this.lblAppuntamenti);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.lblMedici);
-            this.panel3.Controls.Add(this.lblStadi);
-            this.panel3.Controls.Add(this.lblPartite);
+            this.panel3.Controls.Add(this.lblPazienti);
             this.panel3.Controls.Add(this.lblHome);
             this.panel3.Location = new System.Drawing.Point(12, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1893, 40);
             this.panel3.TabIndex = 14;
             // 
-            // lblSquadre
+            // lblAppuntamenti
             // 
-            this.lblSquadre.AutoSize = true;
-            this.lblSquadre.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblSquadre.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSquadre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSquadre.ForeColor = System.Drawing.Color.White;
-            this.lblSquadre.Location = new System.Drawing.Point(376, 0);
-            this.lblSquadre.Name = "lblSquadre";
-            this.lblSquadre.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblSquadre.Size = new System.Drawing.Size(156, 30);
-            this.lblSquadre.TabIndex = 12;
-            this.lblSquadre.Text = "Appuntamenti";
+            this.lblAppuntamenti.AutoSize = true;
+            this.lblAppuntamenti.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblAppuntamenti.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblAppuntamenti.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAppuntamenti.ForeColor = System.Drawing.Color.White;
+            this.lblAppuntamenti.Location = new System.Drawing.Point(250, 0);
+            this.lblAppuntamenti.Name = "lblAppuntamenti";
+            this.lblAppuntamenti.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblAppuntamenti.Size = new System.Drawing.Size(156, 30);
+            this.lblAppuntamenti.TabIndex = 12;
+            this.lblAppuntamenti.Text = "Appuntamenti";
             // 
             // label1
             // 
@@ -161,40 +159,26 @@
             this.lblMedici.Dock = System.Windows.Forms.DockStyle.Left;
             this.lblMedici.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMedici.ForeColor = System.Drawing.Color.White;
-            this.lblMedici.Location = new System.Drawing.Point(295, 0);
+            this.lblMedici.Location = new System.Drawing.Point(169, 0);
             this.lblMedici.Name = "lblMedici";
             this.lblMedici.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.lblMedici.Size = new System.Drawing.Size(81, 30);
             this.lblMedici.TabIndex = 11;
             this.lblMedici.Text = "Medici";
             // 
-            // lblStadi
+            // lblPazienti
             // 
-            this.lblStadi.AutoSize = true;
-            this.lblStadi.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblStadi.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblStadi.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStadi.ForeColor = System.Drawing.Color.White;
-            this.lblStadi.Location = new System.Drawing.Point(198, 0);
-            this.lblStadi.Name = "lblStadi";
-            this.lblStadi.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblStadi.Size = new System.Drawing.Size(97, 30);
-            this.lblStadi.TabIndex = 8;
-            this.lblStadi.Text = "Pazienti";
-            // 
-            // lblPartite
-            // 
-            this.lblPartite.AutoSize = true;
-            this.lblPartite.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblPartite.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblPartite.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPartite.ForeColor = System.Drawing.Color.White;
-            this.lblPartite.Location = new System.Drawing.Point(72, 0);
-            this.lblPartite.Name = "lblPartite";
-            this.lblPartite.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblPartite.Size = new System.Drawing.Size(126, 30);
-            this.lblPartite.TabIndex = 10;
-            this.lblPartite.Text = "Calendario";
+            this.lblPazienti.AutoSize = true;
+            this.lblPazienti.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblPazienti.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblPazienti.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPazienti.ForeColor = System.Drawing.Color.White;
+            this.lblPazienti.Location = new System.Drawing.Point(72, 0);
+            this.lblPazienti.Name = "lblPazienti";
+            this.lblPazienti.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblPazienti.Size = new System.Drawing.Size(97, 30);
+            this.lblPazienti.TabIndex = 8;
+            this.lblPazienti.Text = "Pazienti";
             // 
             // lblHome
             // 
@@ -366,7 +350,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.btnAggiungiPaziente);
-            this.groupBox1.Controls.Add(this.dateTimePicker);
+            this.groupBox1.Controls.Add(this.dtpPaziente);
             this.groupBox1.Controls.Add(this.txtIbanPaziente);
             this.groupBox1.Controls.Add(this.txtCognomePaziente);
             this.groupBox1.Controls.Add(this.txtNomePaziente);
@@ -398,14 +382,13 @@
             this.btnAggiungiPaziente.UseVisualStyleBackColor = false;
             this.btnAggiungiPaziente.Click += new System.EventHandler(this.btnAggiungiPaziente_Click);
             // 
-            // dateTimePicker
+            // dtpPaziente
             // 
-            this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker.Location = new System.Drawing.Point(11, 171);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(307, 20);
-            this.dateTimePicker.TabIndex = 29;
+            this.dtpPaziente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPaziente.Location = new System.Drawing.Point(11, 171);
+            this.dtpPaziente.Name = "dtpPaziente";
+            this.dtpPaziente.Size = new System.Drawing.Size(307, 20);
+            this.dtpPaziente.TabIndex = 29;
             // 
             // txtIbanPaziente
             // 
@@ -1009,10 +992,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblSquadre;
+        private System.Windows.Forms.Label lblAppuntamenti;
         private System.Windows.Forms.Label lblMedici;
-        private System.Windows.Forms.Label lblStadi;
-        private System.Windows.Forms.Label lblPartite;
+        private System.Windows.Forms.Label lblPazienti;
         private System.Windows.Forms.Label lblHome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
@@ -1025,7 +1007,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAggiungiPaziente;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.DateTimePicker dtpPaziente;
         private System.Windows.Forms.TextBox txtIbanPaziente;
         private System.Windows.Forms.TextBox txtCognomePaziente;
         private System.Windows.Forms.TextBox txtNomePaziente;
