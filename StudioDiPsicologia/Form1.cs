@@ -475,10 +475,10 @@ namespace StudioDiPsicologia
 
                 pazientino.nome = br.ReadString().Trim(' ');
                 pazientino.cognome = br.ReadString().Trim(' ');
+                pazientino.IBAN = br.ReadString();
                 pazientino.giornoDiNascita = br.ReadInt32();
                 pazientino.meseDiNascita = br.ReadInt32();
                 pazientino.annoDiNascita = br.ReadInt32();
-                pazientino.IBAN = br.ReadString();
 
                 Pazienti.Add(pazientino);
             }

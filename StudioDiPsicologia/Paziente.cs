@@ -49,12 +49,12 @@ namespace StudioDiPsicologia
             
             fs.Seek(0, SeekOrigin.End);
             
-            bw.Write(nome);
-            bw.Write(cognome);
-            bw.Write(giornoDiNascita);
-            bw.Write(meseDiNascita);
-            bw.Write(annoDiNascita);
-            bw.Write(IBAN);
+            bw.Write(formattaStringa(nome));        // 20 + 1
+            bw.Write(formattaStringa(cognome));     // 20 + 1
+            bw.Write(IBAN);                         // 27 + 1
+            bw.Write(giornoDiNascita);              // 4
+            bw.Write(meseDiNascita);                // 4
+            bw.Write(annoDiNascita);                // 4
             fs.Close();
         }
 
@@ -62,6 +62,21 @@ namespace StudioDiPsicologia
         public override string ToString()
         {
             return $"{nome}, {cognome}, {giornoDiNascita}, {IBAN}";
+        }
+        private string formattaStringa(string stringa)
+        {
+            if (stringa.Length > 20)
+                stringa  = stringa.Substring(0, 20);
+            else if (stringa.Length < 20)
+                stringa = stringa.PadRight(20);
+            return stringa;
+        }
+        
+        private string formattaNumero(int numero)
+        {
+            if (numero < 10)
+                return $"{0}{numero}";
+            return numero.ToString();
         }
 
     }
