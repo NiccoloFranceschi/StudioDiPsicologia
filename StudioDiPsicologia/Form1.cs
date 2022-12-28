@@ -639,6 +639,5 @@ namespace StudioDiPsicologia
             PanelAppuntamento.Visible = true;
             PanelHome.Visible = false;
         }
-        
     }
 }
