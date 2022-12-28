@@ -24,7 +24,9 @@ namespace StudioDiPsicologia
         // Specializzazione e Lavoro
         public string specializzazione { get { return _specializzazione; } set { _specializzazione = value; } }
         public bool inLavoro { get { return _inLavoro; } set { _inLavoro = value; } }
-        public int medicoID { get { return _medicoID; } set { _medicoID = value; } }
+        
+        // ID del medico
+        public int medicoID { get { return _medicoID; } set { _medicoID = value; } } 
 
         // Orario Lavoro
         public int orarioInizio { get { return _orarioInizio; } set { _orarioInizio = value; } }
