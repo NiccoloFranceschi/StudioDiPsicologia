@@ -606,5 +606,39 @@ namespace StudioDiPsicologia
                 }
             }
         }
+
+        private void lblHome_Click(object sender, EventArgs e)
+        {
+            PanelPaziente.Visible = false;
+            PanelMedico.Visible = false;
+            PanelAppuntamento.Visible = false;
+            PanelHome.Visible = true;
+        }
+
+        private void lblPazienti_Click(object sender, EventArgs e)
+        {
+            PanelPaziente.Visible = true;
+            PanelMedico.Visible = false;
+            PanelAppuntamento.Visible = false;
+            PanelHome.Visible = false;
+        }
+        
+        private void lblMedici_Click(object sender, EventArgs e)
+        {
+            PanelPaziente.Visible = false;
+            PanelMedico.Visible = true;
+            PanelAppuntamento.Visible = false;
+            PanelHome.Visible = false;
+        }
+        
+
+        private void lblAppuntamenti_Click(object sender, EventArgs e)
+        {
+            PanelPaziente.Visible = false;
+            PanelMedico.Visible = false;
+            PanelAppuntamento.Visible = true;
+            PanelHome.Visible = false;
+        }
+        
     }
 }

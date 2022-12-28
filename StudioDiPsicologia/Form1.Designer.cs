@@ -35,19 +35,17 @@
             this.lblMedici = new System.Windows.Forms.Label();
             this.lblPazienti = new System.Windows.Forms.Label();
             this.lblHome = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.PanelHome = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.pbOrario = new System.Windows.Forms.ProgressBar();
             this.lblData = new System.Windows.Forms.Label();
             this.lblOra = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Orologio = new System.Windows.Forms.Timer(this.components);
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PanelPaziente = new System.Windows.Forms.Panel();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
             this.lbxPazienti = new System.Windows.Forms.ListBox();
             this.btnRimuoviPaziente = new System.Windows.Forms.Button();
-            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAggiungiPaziente = new System.Windows.Forms.Button();
             this.dtpPaziente = new System.Windows.Forms.DateTimePicker();
@@ -59,26 +57,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.txtMedicoID = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label25 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
+            this.PanelMedico = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.lbxMedici = new System.Windows.Forms.ListBox();
             this.btnRimuoviMedico = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label23 = new System.Windows.Forms.Label();
             this.txtIDMedico = new System.Windows.Forms.TextBox();
@@ -94,12 +76,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.PanelAppuntamento = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.lbxAppuntamenti = new System.Windows.Forms.ListBox();
-            this.btnRimuoviAppuntamento = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmbMedico = new System.Windows.Forms.ComboBox();
             this.cmbPaziente = new System.Windows.Forms.ComboBox();
@@ -113,19 +93,16 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.PanelHome.SuspendLayout();
+            this.PanelPaziente.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.PanelMedico.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nFineMedico)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nInizioMedico)).BeginInit();
-            this.panel5.SuspendLayout();
+            this.PanelAppuntamento.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudOrario)).BeginInit();
@@ -142,7 +119,7 @@
             this.panel3.Controls.Add(this.lblHome);
             this.panel3.Location = new System.Drawing.Point(12, 12);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1893, 40);
+            this.panel3.Size = new System.Drawing.Size(1590, 40);
             this.panel3.TabIndex = 14;
             // 
             // lblAppuntamenti
@@ -158,6 +135,7 @@
             this.lblAppuntamenti.Size = new System.Drawing.Size(156, 30);
             this.lblAppuntamenti.TabIndex = 12;
             this.lblAppuntamenti.Text = "Appuntamenti";
+            this.lblAppuntamenti.Click += new System.EventHandler(this.lblAppuntamenti_Click);
             // 
             // label1
             // 
@@ -165,7 +143,7 @@
             this.label1.Dock = System.Windows.Forms.DockStyle.Right;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1662, 0);
+            this.label1.Location = new System.Drawing.Point(1359, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(231, 31);
             this.label1.TabIndex = 13;
@@ -184,6 +162,7 @@
             this.lblMedici.Size = new System.Drawing.Size(81, 30);
             this.lblMedici.TabIndex = 11;
             this.lblMedici.Text = "Medici";
+            this.lblMedici.Click += new System.EventHandler(this.lblMedici_Click);
             // 
             // lblPazienti
             // 
@@ -198,6 +177,7 @@
             this.lblPazienti.Size = new System.Drawing.Size(97, 30);
             this.lblPazienti.TabIndex = 8;
             this.lblPazienti.Text = "Pazienti";
+            this.lblPazienti.Click += new System.EventHandler(this.lblPazienti_Click);
             // 
             // lblHome
             // 
@@ -212,19 +192,20 @@
             this.lblHome.Size = new System.Drawing.Size(72, 30);
             this.lblHome.TabIndex = 9;
             this.lblHome.Text = "Home";
+            this.lblHome.Click += new System.EventHandler(this.lblHome_Click);
             // 
-            // panel1
+            // PanelHome
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.pbOrario);
-            this.panel1.Controls.Add(this.lblData);
-            this.panel1.Controls.Add(this.lblOra);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(12, 59);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(945, 424);
-            this.panel1.TabIndex = 15;
+            this.PanelHome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
+            this.PanelHome.Controls.Add(this.label3);
+            this.PanelHome.Controls.Add(this.pbOrario);
+            this.PanelHome.Controls.Add(this.lblData);
+            this.PanelHome.Controls.Add(this.lblOra);
+            this.PanelHome.Controls.Add(this.label2);
+            this.PanelHome.Location = new System.Drawing.Point(12, 59);
+            this.PanelHome.Name = "PanelHome";
+            this.PanelHome.Size = new System.Drawing.Size(945, 424);
+            this.PanelHome.TabIndex = 15;
             // 
             // label3
             // 
@@ -289,41 +270,31 @@
             this.Orologio.Enabled = true;
             this.Orologio.Tick += new System.EventHandler(this.Orologio_Tick);
             // 
-            // panel2
+            // PanelPaziente
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
-            this.panel2.Controls.Add(this.groupBox6);
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(963, 59);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(945, 424);
-            this.panel2.TabIndex = 21;
+            this.PanelPaziente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
+            this.PanelPaziente.Controls.Add(this.groupBox6);
+            this.PanelPaziente.Controls.Add(this.groupBox1);
+            this.PanelPaziente.Controls.Add(this.label4);
+            this.PanelPaziente.Location = new System.Drawing.Point(963, 59);
+            this.PanelPaziente.Name = "PanelPaziente";
+            this.PanelPaziente.Size = new System.Drawing.Size(642, 424);
+            this.PanelPaziente.TabIndex = 21;
+            this.PanelPaziente.Visible = false;
             // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox6.Controls.Add(this.dateTimePicker4);
             this.groupBox6.Controls.Add(this.lbxPazienti);
             this.groupBox6.Controls.Add(this.btnRimuoviPaziente);
-            this.groupBox6.Controls.Add(this.label22);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.White;
             this.groupBox6.Location = new System.Drawing.Point(353, 67);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(572, 341);
+            this.groupBox6.Size = new System.Drawing.Size(286, 341);
             this.groupBox6.TabIndex = 42;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Gestione Pazienti";
-            // 
-            // dateTimePicker4
-            // 
-            this.dateTimePicker4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker4.Location = new System.Drawing.Point(14, 60);
-            this.dateTimePicker4.Name = "dateTimePicker4";
-            this.dateTimePicker4.Size = new System.Drawing.Size(208, 20);
-            this.dateTimePicker4.TabIndex = 34;
             // 
             // lbxPazienti
             // 
@@ -333,9 +304,9 @@
             this.lbxPazienti.ForeColor = System.Drawing.Color.White;
             this.lbxPazienti.FormattingEnabled = true;
             this.lbxPazienti.ItemHeight = 24;
-            this.lbxPazienti.Location = new System.Drawing.Point(269, 19);
+            this.lbxPazienti.Location = new System.Drawing.Point(6, 19);
             this.lbxPazienti.Name = "lbxPazienti";
-            this.lbxPazienti.Size = new System.Drawing.Size(297, 316);
+            this.lbxPazienti.Size = new System.Drawing.Size(274, 244);
             this.lbxPazienti.TabIndex = 26;
             // 
             // btnRimuoviPaziente
@@ -345,25 +316,13 @@
             this.btnRimuoviPaziente.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRimuoviPaziente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRimuoviPaziente.ForeColor = System.Drawing.Color.Transparent;
-            this.btnRimuoviPaziente.Location = new System.Drawing.Point(14, 275);
+            this.btnRimuoviPaziente.Location = new System.Drawing.Point(6, 275);
             this.btnRimuoviPaziente.Name = "btnRimuoviPaziente";
-            this.btnRimuoviPaziente.Size = new System.Drawing.Size(216, 43);
+            this.btnRimuoviPaziente.Size = new System.Drawing.Size(274, 43);
             this.btnRimuoviPaziente.TabIndex = 40;
             this.btnRimuoviPaziente.Text = "Rimuovi Paziente";
             this.btnRimuoviPaziente.UseVisualStyleBackColor = false;
             this.btnRimuoviPaziente.Click += new System.EventHandler(this.btnRimuoviPaziente_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(14, 32);
-            this.label22.Name = "label22";
-            this.label22.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label22.Size = new System.Drawing.Size(61, 25);
-            this.label22.TabIndex = 21;
-            this.label22.Text = "Data";
             // 
             // groupBox1
             // 
@@ -494,196 +453,31 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Paziente";
             // 
-            // panel4
+            // PanelMedico
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
-            this.panel4.Controls.Add(this.groupBox7);
-            this.panel4.Controls.Add(this.groupBox5);
-            this.panel4.Controls.Add(this.groupBox2);
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Location = new System.Drawing.Point(12, 489);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(945, 424);
-            this.panel4.TabIndex = 22;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox7.Controls.Add(this.label24);
-            this.groupBox7.Controls.Add(this.txtMedicoID);
-            this.groupBox7.Controls.Add(this.numericUpDown1);
-            this.groupBox7.Controls.Add(this.numericUpDown2);
-            this.groupBox7.Controls.Add(this.label25);
-            this.groupBox7.Controls.Add(this.textBox2);
-            this.groupBox7.Controls.Add(this.button1);
-            this.groupBox7.Controls.Add(this.textBox3);
-            this.groupBox7.Controls.Add(this.textBox4);
-            this.groupBox7.Controls.Add(this.label26);
-            this.groupBox7.Controls.Add(this.label27);
-            this.groupBox7.Controls.Add(this.label28);
-            this.groupBox7.Controls.Add(this.label29);
-            this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox7.ForeColor = System.Drawing.Color.White;
-            this.groupBox7.Location = new System.Drawing.Point(294, 19);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(341, 61);
-            this.groupBox7.TabIndex = 36;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Aggiungi Medico";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.White;
-            this.label24.Location = new System.Drawing.Point(227, 201);
-            this.label24.Name = "label24";
-            this.label24.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label24.Size = new System.Drawing.Size(34, 25);
-            this.label24.TabIndex = 35;
-            this.label24.Text = "ID";
-            // 
-            // txtMedicoID
-            // 
-            this.txtMedicoID.Location = new System.Drawing.Point(227, 229);
-            this.txtMedicoID.Name = "txtMedicoID";
-            this.txtMedicoID.Size = new System.Drawing.Size(91, 20);
-            this.txtMedicoID.TabIndex = 34;
-            this.txtMedicoID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMedicoID_KeyPress);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(123, 228);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(98, 20);
-            this.numericUpDown1.TabIndex = 32;
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Location = new System.Drawing.Point(11, 229);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(106, 20);
-            this.numericUpDown2.TabIndex = 31;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.White;
-            this.label25.Location = new System.Drawing.Point(118, 199);
-            this.label25.Name = "label25";
-            this.label25.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label25.Size = new System.Drawing.Size(103, 25);
-            this.label25.TabIndex = 32;
-            this.label25.Text = "Ora Fine";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(11, 173);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(307, 20);
-            this.textBox2.TabIndex = 30;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(72, 275);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(185, 0);
-            this.button1.TabIndex = 33;
-            this.button1.Text = "Aggiungi";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(11, 115);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(307, 20);
-            this.textBox3.TabIndex = 26;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(11, 60);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(307, 20);
-            this.textBox4.TabIndex = 25;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.White;
-            this.label26.Location = new System.Drawing.Point(6, 32);
-            this.label26.Name = "label26";
-            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label26.Size = new System.Drawing.Size(72, 25);
-            this.label26.TabIndex = 21;
-            this.label26.Text = "Nome";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.White;
-            this.label27.Location = new System.Drawing.Point(6, 200);
-            this.label27.Name = "label27";
-            this.label27.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label27.Size = new System.Drawing.Size(113, 25);
-            this.label27.TabIndex = 24;
-            this.label27.Text = "Ora Inizio";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.White;
-            this.label28.Location = new System.Drawing.Point(6, 87);
-            this.label28.Name = "label28";
-            this.label28.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label28.Size = new System.Drawing.Size(111, 25);
-            this.label28.TabIndex = 22;
-            this.label28.Text = "Cognome";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.White;
-            this.label29.Location = new System.Drawing.Point(6, 142);
-            this.label29.Name = "label29";
-            this.label29.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label29.Size = new System.Drawing.Size(190, 25);
-            this.label29.TabIndex = 23;
-            this.label29.Text = "Specializzazione";
+            this.PanelMedico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
+            this.PanelMedico.Controls.Add(this.groupBox5);
+            this.PanelMedico.Controls.Add(this.groupBox2);
+            this.PanelMedico.Controls.Add(this.label13);
+            this.PanelMedico.Location = new System.Drawing.Point(12, 489);
+            this.PanelMedico.Name = "PanelMedico";
+            this.PanelMedico.Size = new System.Drawing.Size(703, 424);
+            this.PanelMedico.TabIndex = 22;
+            this.PanelMedico.Visible = false;
             // 
             // groupBox5
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox5.Controls.Add(this.dateTimePicker3);
             this.groupBox5.Controls.Add(this.lbxMedici);
             this.groupBox5.Controls.Add(this.btnRimuoviMedico);
-            this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.White;
             this.groupBox5.Location = new System.Drawing.Point(353, 67);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(572, 341);
+            this.groupBox5.Size = new System.Drawing.Size(310, 341);
             this.groupBox5.TabIndex = 42;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Gestione Medici";
-            // 
-            // dateTimePicker3
-            // 
-            this.dateTimePicker3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker3.Location = new System.Drawing.Point(14, 60);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(208, 20);
-            this.dateTimePicker3.TabIndex = 34;
             // 
             // lbxMedici
             // 
@@ -693,9 +487,9 @@
             this.lbxMedici.ForeColor = System.Drawing.Color.White;
             this.lbxMedici.FormattingEnabled = true;
             this.lbxMedici.ItemHeight = 24;
-            this.lbxMedici.Location = new System.Drawing.Point(269, 19);
+            this.lbxMedici.Location = new System.Drawing.Point(7, 19);
             this.lbxMedici.Name = "lbxMedici";
-            this.lbxMedici.Size = new System.Drawing.Size(297, 316);
+            this.lbxMedici.Size = new System.Drawing.Size(297, 244);
             this.lbxMedici.TabIndex = 26;
             // 
             // btnRimuoviMedico
@@ -705,25 +499,13 @@
             this.btnRimuoviMedico.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnRimuoviMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRimuoviMedico.ForeColor = System.Drawing.Color.Transparent;
-            this.btnRimuoviMedico.Location = new System.Drawing.Point(14, 275);
+            this.btnRimuoviMedico.Location = new System.Drawing.Point(6, 275);
             this.btnRimuoviMedico.Name = "btnRimuoviMedico";
-            this.btnRimuoviMedico.Size = new System.Drawing.Size(216, 43);
+            this.btnRimuoviMedico.Size = new System.Drawing.Size(298, 43);
             this.btnRimuoviMedico.TabIndex = 40;
             this.btnRimuoviMedico.Text = "Rimuovi Medico";
             this.btnRimuoviMedico.UseVisualStyleBackColor = false;
             this.btnRimuoviMedico.Click += new System.EventHandler(this.btnRimuoviMedico_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(14, 32);
-            this.label17.Name = "label17";
-            this.label17.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label17.Size = new System.Drawing.Size(61, 25);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "Data";
             // 
             // groupBox2
             // 
@@ -895,41 +677,31 @@
             this.label13.TabIndex = 20;
             this.label13.Text = "Medico";
             // 
-            // panel5
+            // PanelAppuntamento
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
-            this.panel5.Controls.Add(this.groupBox4);
-            this.panel5.Controls.Add(this.groupBox3);
-            this.panel5.Controls.Add(this.label20);
-            this.panel5.Location = new System.Drawing.Point(963, 489);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(945, 424);
-            this.panel5.TabIndex = 23;
+            this.PanelAppuntamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(47)))), ((int)(((byte)(54)))));
+            this.PanelAppuntamento.Controls.Add(this.groupBox4);
+            this.PanelAppuntamento.Controls.Add(this.groupBox3);
+            this.PanelAppuntamento.Controls.Add(this.label20);
+            this.PanelAppuntamento.Location = new System.Drawing.Point(721, 489);
+            this.PanelAppuntamento.Name = "PanelAppuntamento";
+            this.PanelAppuntamento.Size = new System.Drawing.Size(884, 424);
+            this.PanelAppuntamento.TabIndex = 23;
+            this.PanelAppuntamento.Visible = false;
             // 
             // groupBox4
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox4.Controls.Add(this.dateTimePicker2);
             this.groupBox4.Controls.Add(this.lbxAppuntamenti);
-            this.groupBox4.Controls.Add(this.btnRimuoviAppuntamento);
-            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.button2);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
             this.groupBox4.Location = new System.Drawing.Point(370, 67);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(572, 341);
+            this.groupBox4.Size = new System.Drawing.Size(505, 341);
             this.groupBox4.TabIndex = 41;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Gestione Appuntamenti";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(14, 60);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(208, 20);
-            this.dateTimePicker2.TabIndex = 34;
             // 
             // lbxAppuntamenti
             // 
@@ -939,37 +711,24 @@
             this.lbxAppuntamenti.ForeColor = System.Drawing.Color.White;
             this.lbxAppuntamenti.FormattingEnabled = true;
             this.lbxAppuntamenti.ItemHeight = 24;
-            this.lbxAppuntamenti.Location = new System.Drawing.Point(269, 19);
+            this.lbxAppuntamenti.Location = new System.Drawing.Point(6, 19);
             this.lbxAppuntamenti.Name = "lbxAppuntamenti";
-            this.lbxAppuntamenti.Size = new System.Drawing.Size(297, 316);
+            this.lbxAppuntamenti.Size = new System.Drawing.Size(493, 244);
             this.lbxAppuntamenti.TabIndex = 26;
             // 
-            // btnRimuoviAppuntamento
+            // button2
             // 
-            this.btnRimuoviAppuntamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRimuoviAppuntamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.btnRimuoviAppuntamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnRimuoviAppuntamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRimuoviAppuntamento.ForeColor = System.Drawing.Color.Transparent;
-            this.btnRimuoviAppuntamento.Location = new System.Drawing.Point(14, 275);
-            this.btnRimuoviAppuntamento.Name = "btnRimuoviAppuntamento";
-            this.btnRimuoviAppuntamento.Size = new System.Drawing.Size(216, 43);
-            this.btnRimuoviAppuntamento.TabIndex = 40;
-            this.btnRimuoviAppuntamento.Text = "Rimuovi Appuntamento";
-            this.btnRimuoviAppuntamento.UseVisualStyleBackColor = false;
-            this.btnRimuoviAppuntamento.Click += new System.EventHandler(this.btnRimuoviAppuntamento_Click);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(14, 32);
-            this.label21.Name = "label21";
-            this.label21.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label21.Size = new System.Drawing.Size(61, 25);
-            this.label21.TabIndex = 21;
-            this.label21.Text = "Data";
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Transparent;
+            this.button2.Location = new System.Drawing.Point(6, 275);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(493, 43);
+            this.button2.TabIndex = 40;
+            this.button2.Text = "Rimuovi Appuntamento";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // groupBox3
             // 
@@ -1115,11 +874,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.ClientSize = new System.Drawing.Size(1917, 917);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1614, 917);
+            this.Controls.Add(this.PanelAppuntamento);
+            this.Controls.Add(this.PanelMedico);
+            this.Controls.Add(this.PanelPaziente);
+            this.Controls.Add(this.PanelHome);
             this.Controls.Add(this.panel3);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
@@ -1127,50 +886,28 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.PanelHome.ResumeLayout(false);
+            this.PanelHome.PerformLayout();
+            this.PanelPaziente.ResumeLayout(false);
+            this.PanelPaziente.PerformLayout();
             this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            this.PanelMedico.ResumeLayout(false);
+            this.PanelMedico.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nFineMedico)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nInizioMedico)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.PanelAppuntamento.ResumeLayout(false);
+            this.PanelAppuntamento.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudOrario)).EndInit();
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox txtMedicoID;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
 
         private System.Windows.Forms.TextBox txtIDMedico;
         private System.Windows.Forms.Label label23;
@@ -1179,23 +916,17 @@
         private System.Windows.Forms.ComboBox cmbMedico;
 
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button btnRimuoviMedico;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.DateTimePicker dateTimePicker4;
         private System.Windows.Forms.Button btnRimuoviPaziente;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.ListBox lbxPazientilb;
 
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button btnRimuoviAppuntamento;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button button2;
 
         private System.Windows.Forms.TextBox txtMotivazione;
 
-        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel PanelAppuntamento;
         private System.Windows.Forms.ListBox lbxAppuntamenti;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.NumericUpDown nudOrario;
@@ -1215,14 +946,14 @@
         private System.Windows.Forms.Label lblPazienti;
         private System.Windows.Forms.Label lblHome;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel PanelHome;
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Label lblOra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer Orologio;
         private System.Windows.Forms.ProgressBar pbOrario;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel PanelPaziente;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAggiungiPaziente;
         private System.Windows.Forms.DateTimePicker dtpPaziente;
@@ -1235,7 +966,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ListBox lbxPazienti;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel PanelMedico;
         private System.Windows.Forms.ListBox lbxMedici;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown nFineMedico;
