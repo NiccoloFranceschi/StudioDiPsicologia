@@ -25,7 +25,7 @@ namespace StudioDiPsicologia
             pbOrario.ForeColor = Color.White;
             caricaPazienti(lbxPazienti, cmbPaziente);
             caricaMedici(lbxMedici, cmbMedico);
-            caricaListBoxAppuntamenti(lbxAppuntamenti);
+            caricaAppuntamenti(lbxAppuntamenti);
         }
         
         // --- Liste ---
@@ -254,11 +254,12 @@ namespace StudioDiPsicologia
                     medichetto.specializzazione = txtSpecializzazioneMedico.Text;
                     medichetto.inLavoro = true;
                     medichetto.medicoID = Convert.ToInt32(txtIDMedico.Text);
-
+                    
+                    
                     if (nud1.Value > nud.Value) // Controllo se gli orari sono invertiti e li salvo al contrario
                     {
-                        medichetto.orarioInizio = Convert.ToInt32(nud1.Value);
-                        medichetto.orarioFine = Convert.ToInt32(nud.Value);
+                        medichetto.orarioInizio = Convert.ToInt32(nud.Value);
+                        medichetto.orarioFine = Convert.ToInt32(nud1.Value);
                         
                         Medici.Add(medichetto);
                         svuotaMedico(txtNomeMedico, txtCognomeMedico, txtSpecializzazioneMedico, txtIDMedico, nInizioMedico, nFineMedico);
@@ -267,8 +268,8 @@ namespace StudioDiPsicologia
                     }
                     else
                     {
-                        medichetto.orarioInizio = Convert.ToInt32(nud.Value);
-                        medichetto.orarioFine = Convert.ToInt32(nud1.Value);
+                        medichetto.orarioInizio = Convert.ToInt32(nud1.Value);
+                        medichetto.orarioFine = Convert.ToInt32(nud.Value);
                         
                         Medici.Add(medichetto);
                         svuotaMedico(txtNomeMedico, txtCognomeMedico, txtSpecializzazioneMedico, txtIDMedico, nInizioMedico, nFineMedico);
@@ -367,6 +368,8 @@ namespace StudioDiPsicologia
         public void AggiungiAppuntamento()
         {
             Appuntamento appuntamentino = new Appuntamento();
+            Random rnd = new Random();
+            
             if (cmbMedico.SelectedIndex == -1 || cmbPaziente.SelectedIndex == -1 || nudOrario.Value == 0 || txtMotivazione.Text == "")
             {
                 MessageBox.Show("Non hai inserito tutti i dati", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -385,10 +388,13 @@ namespace StudioDiPsicologia
                     appuntamentino.orario = Convert.ToInt32(nudOrario.Value);
                     appuntamentino.data = dtpAppuntamento.Text;
                     appuntamentino.note = txtMotivazione.Text;
+                    appuntamentino.id = Appuntamenti.Count + rnd.Next(1, 3000);
+                    appuntamentino.completato = false;
 
                     Appuntamenti.Add(appuntamentino);
+                    appuntamentino.salvaAppuntamento();
                     svuotaAppuntamento(cmbMedico, cmbPaziente, nudOrario, txtMotivazione, dtpAppuntamento);
-                    caricaListBoxAppuntamenti(lbxAppuntamenti);
+                    caricaAppuntamenti(lbxAppuntamenti);
                 }
             }
         }
@@ -407,6 +413,45 @@ namespace StudioDiPsicologia
             }
         }
 
+        // Funzione per rimuovere un Appuntamento
+        private void rimuoviAppuntamento()
+        {
+            if (lbxAppuntamenti.SelectedIndex == -1)
+            {
+                MessageBox.Show("Non hai selezionato nessun appuntamento", "Errore", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FileStream fs = new FileStream("Appuntamenti.bin", FileMode.OpenOrCreate);
+                BinaryWriter bw = new BinaryWriter(fs);
+                BinaryReader br = new BinaryReader(fs);
+
+                while (fs.Position < fs.Length)
+                {
+                    fs.Seek(46, SeekOrigin.Current);
+                    int ID = br.ReadInt32();
+                    fs.Seek(47, SeekOrigin.Current);
+                    
+                    if (ID == Appuntamenti[lbxAppuntamenti.SelectedIndex].id)
+                    {
+                        fs.Seek(-47, SeekOrigin.Current);
+                        bw.Write(true);
+                        fs.Close();
+                        caricaAppuntamenti(lbxAppuntamenti);
+                        return;
+                    }
+                }
+                fs.Close();
+                return;
+            }
+        }
+        
+        // Bottone per rimuovere un appuntamento
+        private void btnRimuoviAppuntamento_Click(object sender, EventArgs e)
+        {
+            rimuoviAppuntamento();
+        }   
+        
         // Funzione per controllare se un appuntamento esiste già
         private bool esisteAppuntamento()
         {
@@ -427,9 +472,7 @@ namespace StudioDiPsicologia
 
 
 
-
-
-
+        
         //  --- Funzioni Grafiche e Caricamenti ---
         public void svuotaAppuntamento(ComboBox cmb, ComboBox cmb1, NumericUpDown nud, TextBox txt, DateTimePicker dtp)
         {
@@ -530,16 +573,38 @@ namespace StudioDiPsicologia
                 }
             }
         }
-        public void caricaListBoxAppuntamenti(ListBox lst)
+        public void caricaAppuntamenti(ListBox lst)
         {
+            Appuntamenti.Clear();
+            FileStream fs = new FileStream("Appuntamenti.bin", FileMode.OpenOrCreate);
+            BinaryReader br = new BinaryReader(fs);
+
+            while (fs.Position < fs.Length)
+            {
+                Appuntamento appuntamento = new Appuntamento();
+
+                appuntamento.medico.nome = br.ReadString().Trim(' ');
+                appuntamento.medico.medicoID = br.ReadInt32();
+                appuntamento.paziente.nome = br.ReadString().Trim(' ');
+                appuntamento.id = br.ReadInt32();
+                appuntamento.completato = br.ReadBoolean();
+                appuntamento.data = br.ReadString().Trim(' ');
+                appuntamento.note = br.ReadString().Trim(' ');
+                appuntamento.orario = br.ReadInt32();
+
+                fs.Seek(0, SeekOrigin.Current);
+                Appuntamenti.Add(appuntamento);
+            }
+            fs.Close();
+
             lst.Items.Clear();
             foreach (Appuntamento appuntamento in Appuntamenti)
             {
-                lst.Items.Add(appuntamento.medico.nome + " " + appuntamento.paziente.nome);
+                if (!appuntamento.completato)
+                {
+                    lst.Items.Add(appuntamento.medico.nome + " " + appuntamento.paziente.nome);
+                }
             }
         }
-
-
-        
     }
 }

@@ -98,7 +98,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.lbxAppuntamenti = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnRimuoviAppuntamento = new System.Windows.Forms.Button();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.cmbMedico = new System.Windows.Forms.ComboBox();
@@ -911,7 +911,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.Controls.Add(this.dateTimePicker2);
             this.groupBox4.Controls.Add(this.lbxAppuntamenti);
-            this.groupBox4.Controls.Add(this.button2);
+            this.groupBox4.Controls.Add(this.btnRimuoviAppuntamento);
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.Color.White;
@@ -944,19 +944,20 @@
             this.lbxAppuntamenti.Size = new System.Drawing.Size(297, 316);
             this.lbxAppuntamenti.TabIndex = 26;
             // 
-            // button2
+            // btnRimuoviAppuntamento
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Transparent;
-            this.button2.Location = new System.Drawing.Point(14, 275);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(216, 43);
-            this.button2.TabIndex = 40;
-            this.button2.Text = "Rimuovi Appuntamento";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnRimuoviAppuntamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRimuoviAppuntamento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.btnRimuoviAppuntamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnRimuoviAppuntamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRimuoviAppuntamento.ForeColor = System.Drawing.Color.Transparent;
+            this.btnRimuoviAppuntamento.Location = new System.Drawing.Point(14, 275);
+            this.btnRimuoviAppuntamento.Name = "btnRimuoviAppuntamento";
+            this.btnRimuoviAppuntamento.Size = new System.Drawing.Size(216, 43);
+            this.btnRimuoviAppuntamento.TabIndex = 40;
+            this.btnRimuoviAppuntamento.Text = "Rimuovi Appuntamento";
+            this.btnRimuoviAppuntamento.UseVisualStyleBackColor = false;
+            this.btnRimuoviAppuntamento.Click += new System.EventHandler(this.btnRimuoviAppuntamento_Click);
             // 
             // label21
             // 
@@ -1189,7 +1190,7 @@
 
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnRimuoviAppuntamento;
         private System.Windows.Forms.Label label21;
 
         private System.Windows.Forms.TextBox txtMotivazione;

@@ -55,7 +55,7 @@ namespace StudioDiPsicologia
             bw.Write(giornoDiNascita);              // 4
             bw.Write(meseDiNascita);                // 4
             bw.Write(annoDiNascita);                // 4
-            fs.Close();
+            fs.Close();                             // byte totali: 80
         }
 
         // Override del metodo ToString
