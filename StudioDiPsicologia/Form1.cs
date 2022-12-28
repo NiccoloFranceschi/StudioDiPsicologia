@@ -19,6 +19,7 @@ namespace StudioDiPsicologia
             InitializeComponent();
         }
 
+        // Avvio del programma
         private void Form1_Load(object sender, EventArgs e)
         {
             pbOrario.ForeColor = Color.White;
