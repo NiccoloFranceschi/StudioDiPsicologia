@@ -18,7 +18,10 @@ namespace StudioDiPsicologia
         {
             InitializeComponent();
         }
-
+        
+        // Franceschi Niccolò
+        // Non sono riuscito a fare bene la grafca perchè mi si rompeva tutta quanta
+        
         // Avvio del programma
         private void Form1_Load(object sender, EventArgs e)
         {
